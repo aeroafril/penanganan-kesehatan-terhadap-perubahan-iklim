@@ -1,0 +1,234 @@
+:root{
+    --putih: #FDF6E2;
+    --hitam: #000000;
+    --teal: #4A7C74;
+    --tealMuda: #8FB8AF;
+    --coklat: #4A3B32;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--putih);
+    color: var(--hitam);
+    line-height: 1.6;
+    padding-top: 84px; /* kompensasi header fixed, sesuaikan dgn tinggi header kamu */
+}
+
+.hidden { display: none; }
+
+/* ===== CONTENT WRAP (langsung konten, tanpa hero) ===== */
+.content-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 32px 80px;
+}
+
+.page-title-row {
+    margin-bottom: 24px;
+}
+
+.page-title-row h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: var(--coklat);
+    font-size: 0.95rem;
+    max-width: 640px;
+}
+
+/* ===== CONDITION BANNER ===== */
+.condition-banner {
+    background: var(--putih);
+    border: 2px solid var(--hitam);
+    border-radius: 14px;
+    padding: 18px 26px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.condition-banner .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(74,124,116,0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(74,124,116,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,124,116,0); }
+}
+
+.condition-banner strong { font-weight: 700; }
+
+.condition-banner .badge {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--coklat);
+    background: var(--tealMuda);
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Level bahaya suhu berdasar skala OSHA (borders/dot berubah warna sesuai kategori, tetap dalam palet yang ada) */
+.condition-banner.level-lower { border-color: var(--teal); }
+.condition-banner.level-lower .dot { background: var(--teal); }
+
+.condition-banner.level-moderate { border-color: var(--tealMuda); }
+.condition-banner.level-moderate .dot { background: var(--tealMuda); }
+.condition-banner.level-moderate .badge { background: var(--teal); color: var(--putih); }
+
+.condition-banner.level-high,
+.condition-banner.level-very_high {
+    border-color: var(--coklat);
+    background: var(--putih);
+}
+.condition-banner.level-high .dot,
+.condition-banner.level-very_high .dot { background: var(--coklat); }
+.condition-banner.level-high .badge,
+.condition-banner.level-very_high .badge { background: var(--coklat); color: var(--putih); }
+
+/* ===== REKOMENDASI DINAMIS ===== */
+.recommendation-box {
+    background: var(--coklat);
+    color: var(--putih);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 32px;
+}
+
+.recommendation-box h3 {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.recommendation-box ul {
+    padding-left: 20px;
+    font-size: 0.92rem;
+}
+
+.recommendation-box li {
+    margin-bottom: 6px;
+}
+
+.source-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--coklat);
+    margin-top: 24px;
+}
+
+/* ===== SECTION ===== */
+.section-title {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.section-sub {
+    color: var(--coklat);
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+/* ===== GUIDE CARDS ===== */
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.guide-card {
+    background: var(--putih);
+    border: 2px solid var(--hitam);
+    border-radius: 16px;
+    padding: 26px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 var(--coklat);
+}
+
+.guide-card.highlight {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px var(--tealMuda);
+}
+
+.guide-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.guide-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--teal);
+    color: var(--putih);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.guide-top h3 { font-size: 1.1rem; }
+
+.guide-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--coklat);
+    background: var(--tealMuda);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-top: 3px;
+}
+
+.guide-card h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 16px 0 8px;
+    color: var(--coklat);
+}
+
+.guide-card ul {
+    padding-left: 18px;
+    font-size: 0.92rem;
+}
+
+.guide-card li { margin-bottom: 5px; }
+
+.disclaimer {
+    margin-top: 50px;
+    background: var(--coklat);
+    color: var(--putih);
+    border-radius: 14px;
+    padding: 22px 28px;
+    font-size: 0.9rem;
+}
+
+.disclaimer strong { font-weight: 700; }
+
+@media (max-width: 760px) {
+    .guide-grid { grid-template-columns: 1fr; }
+    .condition-banner { flex-wrap: wrap; }
+    .condition-banner .badge { margin-left: 0; }
+}

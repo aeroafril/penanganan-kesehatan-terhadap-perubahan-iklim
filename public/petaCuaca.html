@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Cuaca Indonesia</title>
+    <link rel="stylesheet" href="petaCuaca.css">
+    <link rel="stylesheet" href="weatherWidget.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="peta-wrap">
+        <div class="page-title-row">
+            <div>
+                <h1>Peta Cuaca Indonesia</h1>
+                <p class="page-subtitle">Suhu terkini dari kota-kota besar di berbagai provinsi, data langsung dari BMKG.</p>
+            </div>
+            <button class="btn-refresh" id="refreshBtn">🔄 Refresh</button>
+        </div>
+
+        <div class="map-panel">
+            <div class="map-inner" id="mapInner">
+                <span class="map-label">Peta ilustratif — posisi kota merupakan perkiraan</span>
+                <!-- marker kota di-generate lewat JS -->
+            </div>
+            <div class="map-legend">
+                <span><i class="dot-legend dot-cool"></i> &lt; 27°C</span>
+                <span><i class="dot-legend dot-warm"></i> 27–32°C</span>
+                <span><i class="dot-legend dot-hot"></i> &gt; 32°C</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Daftar Kota</h2>
+        <div class="city-grid" id="cityGrid">
+            <!-- city card di-generate lewat JS -->
+        </div>
+
+        <p class="source-note">Data prakiraan cuaca bersumber dari Badan Meteorologi, Klimatologi, dan Geofisika (BMKG).</p>
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="weatherWidget" class="weather-widget"></div>
+
+    <script src="config.js"></script>
+    <script src="cities.js"></script>
+    <script src="weatherWidget.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="petaCuaca.js"></script>
+</body>
+</html>

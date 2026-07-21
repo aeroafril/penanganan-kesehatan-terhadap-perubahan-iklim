@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petik</title>
+    <link rel="stylesheet" href="penangananKesehatan.css">
+    <link rel="stylesheet" href="weatherWidget.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="content-wrap">
+        <div class="page-title-row">
+            <div>
+                <h1>Penanganan Kesehatan Terhadap Perubahan Iklim</h1>
+                <p class="page-subtitle">Panduan praktis sesuai kondisi cuaca saat ini, agar kamu tahu langkah tepat sebelum gejala memburuk.</p>
+            </div>
+        </div>
+
+        <!-- Banner ini sekarang diisi otomatis oleh penangananKesehatan.js berdasar data BMKG -->
+        <div class="condition-banner" id="conditionBanner">
+            <span class="dot" id="conditionDot"></span>
+            <div>Kondisi saat ini: <strong id="conditionText">Memuat data cuaca...</strong></div>
+            <span class="badge" id="conditionBadge">Data cuaca real-time</span>
+        </div>
+
+        <!-- Rekomendasi dinamis berdasar level suhu hari ini -->
+        <div class="recommendation-box hidden" id="recommendationBox">
+            <h3 id="recommendationTitle">Rekomendasi Saat Ini</h3>
+            <ul id="recommendationList"></ul>
+        </div>
+
+        <h2 class="section-title">Pilih kondisi yang kamu alami</h2>
+        <p class="section-sub">Setiap panduan berisi gejala yang perlu diwaspadai dan langkah penanganan awal yang bisa langsung dilakukan.</p>
+
+        <div class="guide-grid">
+
+            <div class="guide-card" id="cardHeatStroke"></div>
+
+            <div class="guide-card" id="cardDehidrasi">
+                <div class="guide-top">
+                    <div class="guide-icon">💧</div>
+                    <div>
+                        <h3>Dehidrasi</h3>
+                        <span class="guide-tag">Suhu tinggi</span>
+                    </div>
+                </div>
+                <h4>Gejala</h4>
+                <ul>
+                    <li>Mulut dan bibir kering</li>
+                    <li>Lemas dan mudah lelah</li>
+                    <li>Urine berwarna gelap dan jarang buang air kecil</li>
+                    <li>Sakit kepala ringan</li>
+                </ul>
+                <h4>Langkah Penanganan</h4>
+                <ul>
+                    <li>Minum air putih atau cairan elektrolit secara bertahap</li>
+                    <li>Hindari aktivitas berat di luar ruangan siang hari</li>
+                    <li>Istirahat di tempat sejuk</li>
+                    <li>Konsultasi dokter bila disertai muntah terus-menerus</li>
+                </ul>
+            </div>
+
+            <div class="guide-card" id="cardIspa">
+                <div class="guide-top">
+                    <div class="guide-icon">😷</div>
+                    <div>
+                        <h3>ISPA (Infeksi Saluran Pernapasan)</h3>
+                        <span class="guide-tag">Kualitas udara buruk</span>
+                    </div>
+                </div>
+                <h4>Gejala</h4>
+                <ul>
+                    <li>Batuk dan tenggorokan gatal</li>
+                    <li>Sesak napas atau napas berbunyi</li>
+                    <li>Mata perih dan berair</li>
+                    <li>Demam ringan</li>
+                </ul>
+                <h4>Langkah Penanganan</h4>
+                <ul>
+                    <li>Gunakan masker saat kualitas udara buruk</li>
+                    <li>Kurangi aktivitas luar ruangan, terutama pagi/sore</li>
+                    <li>Perbanyak istirahat dan cairan hangat</li>
+                    <li>Segera ke fasilitas kesehatan bila sesak memberat</li>
+                </ul>
+            </div>
+
+            <div class="guide-card" id="cardDbd">
+                <div class="guide-top">
+                    <div class="guide-icon">🦟</div>
+                    <div>
+                        <h3>DBD & Penyakit Musim Hujan</h3>
+                        <span class="guide-tag">Curah hujan tinggi</span>
+                    </div>
+                </div>
+                <h4>Gejala</h4>
+                <ul>
+                    <li>Demam tinggi mendadak</li>
+                    <li>Nyeri sendi dan otot</li>
+                    <li>Muncul ruam merah di kulit</li>
+                    <li>Mual dan nafsu makan menurun</li>
+                </ul>
+                <h4>Langkah Penanganan</h4>
+                <ul>
+                    <li>Kompres hangat dan perbanyak minum</li>
+                    <li>Kuras dan tutup penampungan air di sekitar rumah</li>
+                    <li>Pantau suhu tubuh secara berkala</li>
+                    <li>Segera periksa ke fasilitas kesehatan bila demam &gt;2 hari</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="disclaimer">
+            <strong>Catatan:</strong> Panduan ini bersifat edukatif dan bukan pengganti diagnosis atau penanganan medis profesional. Jika gejala memberat atau tidak membaik, segera konsultasikan ke tenaga kesehatan terdekat.
+        </div>
+
+        <p class="source-note">Kategori tingkat bahaya suhu mengacu pada OSHA Heat Index Guidelines (Kestrel Heat Index Reference Guide, berdasar data NOAA).</p>
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="weatherWidget" class="weather-widget"></div>
+
+    <script src="config.js"></script>
+    <script src="weatherWidget.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="penangananKesehatan.js"></script>
+</body>
+</html>

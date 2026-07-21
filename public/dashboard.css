@@ -1,0 +1,135 @@
+:root{
+    --putih: #FDF6E2;
+    --hitam: #000000;
+    --teal: #4A7C74;
+    --tealMuda: #8FB8AF;
+    --coklat: #4A3B32;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--putih);
+}
+
+.dashboardHero{
+    background-color: var(--teal);
+    left: 0;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.dashboardHero h1{
+    color: var(--putih);
+    transform: translateY(300%);
+    font-size: 90px;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 40px;
+}
+
+.dalamContent {
+    position: relative;
+    border: 2px solid var(--hitam);
+    display: block;
+    aspect-ratio: 4 / 3; 
+    overflow: hidden;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.content-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transform: scale(1);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.dalamContent:hover .content-bg {
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+}
+
+.content-overlay h3 {
+    color: var(--putih);
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.content-overlay p {
+    color: var(--putih);
+    font-size: 0.9rem;
+}
+
+.form-desc {
+    font-size: 0.85rem;
+    color: var(--coklat);
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.switch-form-btn {
+    display: block;
+    text-align: center;
+    background: var(--teal);
+    color: var(--putih);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background 0.2s ease;
+}
+
+.switch-form-btn:hover {
+    background: var(--coklat);
+}
+
+@media (max-width: 768px) {
+    #content {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 24px;
+        gap: 16px;
+    }
+    
+    .dashboardHero h1{
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    #content {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .dashboardHero h1{
+        font-size: 50px;
+    }
+}

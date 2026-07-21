@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendeteksi Kesehatan</title>
+    <link rel="stylesheet" href="pendeteksiKesehatan.css">
+    <link rel="stylesheet" href="weatherWidget.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="detect-wrap">
+
+        <div class="page-title-row">
+            <h1>Cek Indikasi Kesehatan Akibat Perubahan Iklim</h1>
+            <p class="page-subtitle">Pilih gejala yang sedang kamu alami, sistem akan memberikan indikasi awal beserta rekomendasi langkah selanjutnya.</p>
+        </div>
+
+        <div class="detect-card">
+            <h2>Gejala yang dialami</h2>
+            <p class="hint">Centang semua gejala yang sesuai, lalu klik "Deteksi Sekarang".</p>
+
+            <div class="symptom-grid" id="symptomGrid">
+                <label class="symptom-item"><input type="checkbox" value="suhu_tubuh_tinggi"> Suhu tubuh tinggi / demam</label>
+                <label class="symptom-item"><input type="checkbox" value="pusing"> Pusing</label>
+                <label class="symptom-item"><input type="checkbox" value="mual"> Mual</label>
+                <label class="symptom-item"><input type="checkbox" value="lemas"> Lemas / mudah lelah</label>
+                <label class="symptom-item"><input type="checkbox" value="kulit_kering"> Kulit / bibir kering</label>
+                <label class="symptom-item"><input type="checkbox" value="batuk"> Batuk</label>
+                <label class="symptom-item"><input type="checkbox" value="sesak_napas"> Sesak napas</label>
+                <label class="symptom-item"><input type="checkbox" value="tenggorokan_gatal"> Tenggorokan gatal</label>
+                <label class="symptom-item"><input type="checkbox" value="mata_perih"> Mata perih / berair</label>
+                <label class="symptom-item"><input type="checkbox" value="ruam_kulit"> Ruam merah di kulit</label>
+                <label class="symptom-item"><input type="checkbox" value="nyeri_sendi"> Nyeri sendi / otot</label>
+                <label class="symptom-item"><input type="checkbox" value="diare"> Diare</label>
+                <label class="symptom-item"><input type="checkbox" value="muntah"> Muntah</label>
+                <label class="symptom-item"><input type="checkbox" value="nyeri_perut"> Nyeri perut</label>
+            </div>
+
+            <div class="detect-actions">
+                <button class="btn-primary" id="detectBtn">Deteksi Sekarang</button>
+                <button class="btn-secondary" id="resetBtn" type="button">Reset</button>
+            </div>
+
+            <div class="result-box" id="resultBox">
+                <div class="result-top">
+                    <h3 id="resultTitle"></h3>
+                    <span class="severity" id="resultSeverity"></span>
+                </div>
+                <p class="matched" id="resultMatched"></p>
+                <p id="resultDesc"></p>
+                <p id="resultRecommendation"></p>
+                <div class="result-note">Hasil ini bersifat indikasi awal dari sistem pakar sederhana, bukan diagnosis medis resmi. Jika gejala berat atau tidak membaik, segera konsultasikan ke dokter atau fasilitas kesehatan.</div>
+                <div class="saved-msg" id="savedMsg"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="weatherWidget" class="weather-widget"></div>
+
+    <script src="weatherWidget.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="pendeteksiKesehatan.js"></script>
+</body>
+</html>

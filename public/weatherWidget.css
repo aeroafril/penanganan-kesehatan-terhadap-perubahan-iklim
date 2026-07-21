@@ -1,0 +1,129 @@
+.weather-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: 0 0 rgba(74, 124, 116, .7);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--hitam);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, transform 0.2s ease;
+}
+
+/* State: TERBUKA (setelah diklik) */
+.weather-widget.open {
+    width: 300px;
+    height: 280px;
+    height: auto;
+    border-radius: 8px;
+    padding: 20px;
+    align-items: stretch;
+    cursor: default;
+    transform: none;
+}
+
+.weather-widget.open:hover {
+    transform: none;
+}
+
+/* Icon kecil pas ketutup */
+.weather-icon-closed img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: opacity 0.2s ease;
+}
+
+.weather-widget.open .weather-icon-closed {
+    display: none;
+}
+
+.weather-content {
+    display: none;
+    color: var(--putih);
+    width: 100%;
+}
+
+.weather-widget.open .weather-content {
+    display: block;
+}
+
+.weather-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.weather-label {
+    font-size: 15px;
+    color: var(--hitam);
+    margin-bottom: 2px;
+}
+
+.weather-location {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.weather-icon-open img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.weather-temp {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.weather-desc {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--hitam);
+    margin-bottom: 4px;
+}
+
+.weather-detail-btn {
+    display: block;
+    text-align: center;
+    background: var(--coklat);
+    color: var(--putih);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 2px solid var(--hitam);
+    border-radius: 8px;
+    padding: 10px;
+    transition: background 0.2s ease;
+}
+
+.weather-detail-btn:hover {
+    background: var(--putih);
+    color: var(--hitam);
+    border: 2px solid var(--hitam);
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    #content {
+        grid-template-columns: 1fr;
+    }
+    .weather-widget.open {
+        width: calc(100vw - 48px);
+    }
+}

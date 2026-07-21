@@ -1,0 +1,269 @@
+:root{
+    --putih: #FDF6E2;
+    --hitam: #000000;
+    --teal: #4A7C74;
+    --tealMuda: #8FB8AF;
+    --coklat: #4A3B32;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--teal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.judulLogin {
+    display: flex;
+    flex-direction: row; /* logo dan judul sejajar horizontal */
+    align-items: center;
+}
+
+.judulLogin img {
+    width: 120px;
+}
+
+.judulLogin h1 {
+    font-size: 120px;
+    color: var(--putih);
+    padding: 15px;
+    z-index: 1;
+    text-align: center;
+}
+
+.container{
+    gap: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AunthContainer {
+    background: var(--putih);
+    border: 2px solid var(--hitam);
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px;
+    padding: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+body.register-mode .judulLogin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    text-align: center;
+    z-index: 1;
+}
+
+.AunthContainer.register-active {
+    max-width: 600px;
+}
+
+.form-container {
+    padding: 40px;
+}
+
+h2 {
+    color: var(--hitam);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.input-group-login {
+    margin-bottom: 20px;
+}
+
+.input-group-login a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.input-group-login a:hover {
+    text-decoration: underline;
+}
+
+.input-group-regis {
+    margin-bottom: 20px;
+}
+
+#registerForm form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+
+#registerForm .full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--hitam);
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--hitam);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--teal);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--coklat);
+    color: var(--putih);
+    border: 2px solid var(--hitam);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background-color: var(--putih);
+    color: var(--hitam);
+    border-color: var(--teal);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.switch-form a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.switch-form a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-top-color: var(--putih);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Tablet / layar sedang ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* logo & form numpuk vertikal, gak lagi sejajar */
+        gap: 40px;
+    }
+
+    .judulLogin img {
+        width: 100px;
+    }
+
+    .judulLogin h1 {
+        font-size: 80px;
+    }
+
+    body.register-mode .judulLogin {
+        /* di layar sempit, biarkan judul ikut alur normal (bukan absolute
+           menumpuk di tengah form) supaya tidak saling tabrakan */
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .form-container {
+        padding: 24px;
+    }
+}
+
+/* ===== Mobile kecil ===== */
+@media (max-width: 480px) {
+    .container {
+        gap: 24px;
+    }
+
+    .judulLogin img {
+        width: 70px;
+    }
+
+    .judulLogin h1 {
+        font-size: 48px;
+    }
+
+    #registerForm form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        padding: 16px;
+    }
+}

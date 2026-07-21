@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="judulLogin" id="judulLogin">
+            <img src="petik.png" alt="logo">
+            <h1>ETIK</h1>
+        </div>
+        <div class="AunthContainer" id="AuthContainer">
+            <div id="loginForm" class="form-container">
+                <h2>Login</h2>
+                <div id="loginMessage"></div>
+                <form onsubmit="handleLoginSubmit(event)">
+                    <div class="input-group-login">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="input-group-login">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" minlength="8" required>
+                        <a href="lupaPassword.html">Lupa Password</a>
+                    </div>
+                    <button type="button" id="loginBtn" onclick="login()">Masuk</button>
+                </form>
+                <div class="switch-form">
+                    Belum punya akun? <a onclick="showRegister()">Daftar di sini</a>
+                </div>
+            </div>
+
+            <div id="registerForm" class="form-container hidden">
+                <h2>Registrasi</h2>
+                <div id="registerMessage"></div>
+                <form>
+                    <div class="input-group-regis">
+                        <label for="registerFirstName">Nama Depan</label>
+                        <input type="text" id="registerFirstName" required>
+                    </div>
+                    <div class="input-group-regis">
+                        <label for="registerLastName">Nama Belakang</label>
+                        <input type="text" id="registerLastName" required>
+                    </div>
+                    <div class="input-group-regis">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="input-group-regis">
+                        <label for="registerUsername">Username</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="input-group-regis">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" minlength="8" required>
+                    </div>
+                    <div class="input-group-regis">
+                        <label for="confirmPassword">Konfirmasi Password</label>
+                        <input type="password" id="confirmPassword" minlength="8" required>
+                    </div>
+                    <button type="submit" id="registerBtn" class="full-width">Daftar</button>
+                </form>
+                <div class="switch-form">
+                    Sudah punya akun? <a onclick="showLogin()">Login di sini</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

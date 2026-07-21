@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Kesehatan</title>
+    <link rel="stylesheet" href="riwayatKesehatan.css">
+    <link rel="stylesheet" href="weatherWidget.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="riwayat-wrap">
+
+        <div class="page-title-row">
+            <h1>Riwayat Kesehatan Kamu</h1>
+            <p class="page-subtitle">Semua hasil deteksi gejala dan rekomendasi yang pernah kamu terima dari fitur Pendeteksi Penyakit.</p>
+        </div>
+
+        <div class="riwayat-toolbar">
+            <div>
+                <h2>Daftar Riwayat</h2>
+                <div class="riwayat-count" id="riwayatCount"></div>
+            </div>
+            <button class="btn-clear" id="clearBtn">Hapus Semua</button>
+        </div>
+
+        <div id="riwayatList"></div>
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="weatherWidget" class="weather-widget"></div>
+
+    <script src="weatherWidget.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="riwayatKesehatan.js"></script>
+</body>
+</html>

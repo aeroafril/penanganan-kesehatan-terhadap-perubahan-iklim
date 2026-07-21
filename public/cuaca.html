@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakiraan Cuaca</title>
+    <link rel="stylesheet" href="cuaca.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="cuaca-wrap">
+
+        <div class="page-title-row">
+            <div>
+                <h1>Prakiraan Cuaca</h1>
+                <div class="location-line" id="locationLine">Memuat lokasi...</div>
+            </div>
+            <div class="title-right">
+                <select id="citySelect" class="city-select" aria-label="Pilih kota"></select>
+                <div class="updated-line" id="updatedLine"></div>
+            </div>
+        </div>
+
+        <div class="state-box error hidden" id="errorState">
+            <p class="error-text" id="errorMessage">Gagal memuat data cuaca.</p>
+            <button class="retry-btn" id="retryBtn">Coba Lagi</button>
+        </div>
+
+        <div id="cuacaContent" class="hidden">
+
+            <div class="day-nav">
+                <button class="day-nav-btn" id="prevDayBtn" aria-label="Hari sebelumnya">&#8592;</button>
+                <div class="day-nav-info">
+                    <h2 id="dayTitle">-</h2>
+                    <span id="daySubtitle">-</span>
+                    <div class="day-dots" id="dayDots"></div>
+                </div>
+                <button class="day-nav-btn" id="nextDayBtn" aria-label="Hari berikutnya">&#8594;</button>
+            </div>
+
+            <div class="slot-grid" id="slotGrid"></div>
+
+            <p class="source-note">Sumber data: Badan Meteorologi, Klimatologi, dan Geofisika (BMKG)</p>
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="config.js"></script>
+    <script src="cities.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script src="cuacaPage.js"></script>
+</body>
+</html>
