@@ -6,7 +6,6 @@ async function connectDB() {
         console.log('MongoDB terhubung');
     } catch (err) {
         console.error('Gagal konek MongoDB:', err.message);
-        process.exit(1);
     }
 }
 
