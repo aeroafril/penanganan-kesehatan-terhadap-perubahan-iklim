@@ -24,7 +24,7 @@ body {
 
 .judulLogin {
     display: flex;
-    flex-direction: row; /* logo dan judul sejajar horizontal */
+    flex-direction: row;
     align-items: center;
 }
 
@@ -134,6 +134,30 @@ input:focus {
     border-color: var(--teal);
 }
 
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 44px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
 button {
     width: 100%;
     padding: 12px;
@@ -216,10 +240,9 @@ button:disabled {
     to { transform: rotate(360deg); }
 }
 
-/* ===== Tablet / layar sedang ===== */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* logo & form numpuk vertikal, gak lagi sejajar */
+        flex-direction: column;
         gap: 40px;
     }
 
@@ -232,8 +255,6 @@ button:disabled {
     }
 
     body.register-mode .judulLogin {
-        /* di layar sempit, biarkan judul ikut alur normal (bukan absolute
-           menumpuk di tengah form) supaya tidak saling tabrakan */
         position: static;
         top: auto;
         left: auto;
@@ -245,7 +266,6 @@ button:disabled {
     }
 }
 
-/* ===== Mobile kecil ===== */
 @media (max-width: 480px) {
     .container {
         gap: 24px;
