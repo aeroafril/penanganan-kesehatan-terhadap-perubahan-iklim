@@ -14,7 +14,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-connectDB();
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        return res.status(503).json({ message: 'Database belum siap, coba lagi sebentar.' });
+    }
+});
 
 const saranLimiter = rateLimit({
     windowMs: 24 * 60 * 60 * 1000,
