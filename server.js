@@ -10,18 +10,14 @@ const { sendSuggestionEmail } = require('./utils/sendEmail');
 
 const app = express();
 
-// Aktifkan HANYA kalau deploy di belakang reverse proxy (Railway, Render, Nginx, dll)
-// app.set('trust proxy', 1);
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 connectDB();
 
-// Rate limiter: max 3 kali kirim saran per IP per 24 jam
 const saranLimiter = rateLimit({
-    windowMs: 24 * 60 * 60 * 1000, // 24 jam
+    windowMs: 24 * 60 * 60 * 1000,
     max: 3,
     standardHeaders: true,
     legacyHeaders: false,
@@ -34,13 +30,10 @@ const saranLimiter = rateLimit({
 app.post('/api/saran', saranLimiter, async (req, res) => {
     try {
         const { message } = req.body;
-
         if (!message || !message.trim()) {
             return res.status(400).json({ message: 'Pesan tidak boleh kosong!' });
         }
-
         await sendSuggestionEmail(message.trim());
-
         res.status(200).json({ success: true, message: 'Saran terkirim!' });
     } catch (error) {
         console.error('Gagal mengirim email saran:', error);
@@ -51,7 +44,11 @@ app.post('/api/saran', saranLimiter, async (req, res) => {
 app.use('/api', authRoutes);
 app.use('/api', weatherRoutes);
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server berjalan di http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
