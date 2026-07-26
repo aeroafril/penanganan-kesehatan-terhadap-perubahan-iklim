@@ -180,7 +180,7 @@ tampilPenanganan();
         if (kategori.level === 'lower') {
             recommendationBox.classList.add('hidden');
         } else {
-            recommendationTitle.textContent = `Rekomendasi Tingkat ${kategori.label}`;
+            recommendationTitle.textContent = `Rekomendasi: Tingkat ${kategori.label}`;
             recommendationList.innerHTML = kategori.rekomendasi.map(r => `<li>${r}</li>`).join('');
             recommendationBox.classList.remove('hidden');
         }
