@@ -29,7 +29,7 @@ const footer = () => {
                     <h1>Pembuat</h1>
                 </nav>
                 <p>Terima kasih telah mengunjungi Webside Kami :)</p>
-                <p><b>Copyright © 2026, AeroAfril</b></p>
+                <p><b>Copyright © 2026, Pradipta</b></p>
             </div>
         </footer>
     `;
