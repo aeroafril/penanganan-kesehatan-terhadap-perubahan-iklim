@@ -36,6 +36,23 @@ function setLoading(buttonId, isLoading) {
         btn.innerHTML = buttonId === 'loginBtn' ? 'Masuk' : 'Daftar';
     }
 }
+function setupPasswordToggles() {
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', () => {
+            const targetId = icon.dataset.target;
+            const input = document.getElementById(targetId);
+            if (!input) return;
+
+            const isCurrentlyHidden = input.type === 'password';
+
+            input.type = isCurrentlyHidden ? 'text' : 'password';
+            icon.src = isCurrentlyHidden ? 'hideeye.png' : 'eye.png';
+            icon.alt = isCurrentlyHidden ? 'Sembunyikan password' : 'Tampilkan password';
+        });
+    });
+}
+
+setupPasswordToggles();
 
 async function login() {
     const username = document.getElementById('loginUsername').value.trim();
@@ -59,7 +76,6 @@ async function login() {
         const data = await response.json();
 
         if (response.ok) {
-            // simpan token & data user biar bisa dipakai di dashboard
             localStorage.setItem('authToken', data.token);
             localStorage.setItem('currentUser', JSON.stringify(data.user));
             window.location.href = 'dashboard.html';
