@@ -17,7 +17,10 @@
     transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, transform 0.2s ease;
 }
 
-/* State: TERBUKA (setelah diklik) */
+.weather-widget:hover{
+    background: var(--teal);
+}
+
 .weather-widget.open {
     width: 300px;
     height: 280px;
@@ -33,7 +36,6 @@
     transform: none;
 }
 
-/* Icon kecil pas ketutup */
 .weather-icon-closed img{
     width: 40px;
     height: 40px;

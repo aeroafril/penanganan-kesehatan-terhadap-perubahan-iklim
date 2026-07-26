@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Cuaca Indonesia</title>
+    <title>Petik</title>
     <link rel="stylesheet" href="petaCuaca.css">
     <link rel="stylesheet" href="weatherWidget.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="font.css">
 </head>
 <body>
     <div id="header"></div>
@@ -18,24 +19,22 @@
                 <h1>Peta Cuaca Indonesia</h1>
                 <p class="page-subtitle">Suhu terkini dari kota-kota besar di berbagai provinsi, data langsung dari BMKG.</p>
             </div>
-            <button class="btn-refresh" id="refreshBtn">🔄 Refresh</button>
+            <button class="btn-refresh" id="refreshBtn"><img src="refresh.png" alt="refresh">Refresh</button>
         </div>
 
         <div class="map-panel">
             <div class="map-inner" id="mapInner">
                 <span class="map-label">Peta ilustratif — posisi kota merupakan perkiraan</span>
-                <!-- marker kota di-generate lewat JS -->
             </div>
             <div class="map-legend">
                 <span><i class="dot-legend dot-cool"></i> &lt; 27°C</span>
-                <span><i class="dot-legend dot-warm"></i> 27–32°C</span>
+                <span><i class="dot-legend dot-warm"></i> 27-32°C</span>
                 <span><i class="dot-legend dot-hot"></i> &gt; 32°C</span>
             </div>
         </div>
 
         <h2 class="section-title">Daftar Kota</h2>
         <div class="city-grid" id="cityGrid">
-            <!-- city card di-generate lewat JS -->
         </div>
 
         <p class="source-note">Data prakiraan cuaca bersumber dari Badan Meteorologi, Klimatologi, dan Geofisika (BMKG).</p>
@@ -44,6 +43,13 @@
     <div id="footer"></div>
 
     <div id="weatherWidget" class="weather-widget"></div>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
 
     <script src="config.js"></script>
     <script src="cities.js"></script>

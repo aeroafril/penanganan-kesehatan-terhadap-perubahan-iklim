@@ -1,35 +1,97 @@
-const dataCardHeatStroke = [
+const dataPenanganan = [
     {
-        
+        id: "heatStroke",
+        judul: "Heat Stroke (Sengatan Panas)",
+        tag: "Suhu ekstrem",
+        gejala: [
+            "Suhu tubuh naik drastis (&gt;39°C)",
+            "Pusing dan kebingungan",
+            "Kulit kering dan memerah, tidak berkeringat",
+            "Mual, lemas, atau pingsan"
+        ],
+        langkah: [
+            "Segera pindah ke tempat teduh dan sejuk",
+            "Longgarkan pakaian, kompres air dingin di leher/ketiak",
+            "Berikan air minum sedikit demi sedikit",
+            "Jika tidak membaik dalam 30 menit, segera ke IGD"
+        ]
     },
-]
-const cardHeatStrokeEL = document.getElementById('cardHeatStroke');
+    {
+        id: "dehidrasi",
+        judul: "Dehidrasi",
+        tag: "Suhu tinggi",
+        gejala: [
+            "Mulut dan bibir kering",
+            "Lemas dan mudah lelah",
+            "Urine berwarna gelap dan jarang buang air kecil",
+            "Sakit kepala ringan"
+        ],
+        langkah: [
+            "Minum air putih atau cairan elektrolit secara bertahap",
+            "Hindari aktivitas berat di luar ruangan siang hari",
+            "Istirahat di tempat sejuk",
+            "Konsultasi dokter bila disertai muntah terus-menerus"
+        ]
+    },
+    {
+        id: "ispa",
+        judul: "ISPA (Infeksi Saluran Pernapasan)",
+        tag: "Kualitas udara buruk",
+        gejala: [
+            "Batuk dan tenggorokan gatal",
+            "Sesak napas atau napas berbunyi",
+            "Mata perih dan berair",
+            "Demam ringan"
+        ],
+        langkah: [
+            "Gunakan masker saat kualitas udara buruk",
+            "Kurangi aktivitas luar ruangan, terutama pagi/sore",
+            "Perbanyak istirahat dan cairan hangat",
+            "Segera ke fasilitas kesehatan bila sesak memberat"
+        ]
+    },
+    {
+        id: "dbd",
+        judul: "DBD & Penyakit Musim Hujan",
+        tag: "Curah hujan tinggi",
+        gejala: [
+            "Demam tinggi mendadak",
+            "Nyeri sendi dan otot",
+            "Muncul ruam merah di kulit",
+            "Mual dan nafsu makan menurun"
+        ],
+        langkah: [
+            "Kompres hangat dan perbanyak minum",
+            "Kuras dan tutup penampungan air di sekitar rumah",
+            "Pantau suhu tubuh secara berkala",
+            "Segera periksa ke fasilitas kesehatan bila demam &gt;2 hari"
+        ]
+    }
+];
 
-const tampilPenanganan = () => {
-    let isi = `
-        <div class="guide-top">
-            <div class="guide-icon">🌡️</div>
-            <div>
-                <h3>Heat Stroke (Sengatan Panas)</h3>
-                <span class="guide-tag">Suhu ekstrem</span>
+const guideGridEl = document.getElementById('guideGrid');
+
+function tampilPenanganan() {
+    if (!guideGridEl) return;
+
+    guideGridEl.innerHTML = dataPenanganan.map(item => `
+        <div class="guide-card${item.highlight ? ' highlight' : ''}" id="card${item.id.charAt(0).toUpperCase() + item.id.slice(1)}">
+            <div class="guide-top">
+                <div>
+                    <h3>${item.judul}</h3>
+                    <span class="guide-tag">${item.tag}</span>
+                </div>
             </div>
+            <h4>Gejala</h4>
+            <ul>
+                ${item.gejala.map(g => `<li>${g}</li>`).join('')}
+            </ul>
+            <h4>Langkah Penanganan</h4>
+            <ul>
+                ${item.langkah.map(l => `<li>${l}</li>`).join('')}
+            </ul>
         </div>
-        <h4>Gejala</h4>
-        <ul>
-            <li>Suhu tubuh naik drastis (&gt;39°C)</li>
-            <li>Pusing dan kebingungan</li>
-            <li>Kulit kering dan memerah, tidak berkeringat</li>
-            <li>Mual, lemas, atau pingsan</li>
-        </ul>
-        <h4>Langkah Penanganan</h4>
-        <ul>
-            <li>Segera pindah ke tempat teduh dan sejuk</li>
-            <li>Longgarkan pakaian, kompres air dingin di leher/ketiak</li>
-            <li>Berikan air minum sedikit demi sedikit</li>
-            <li>Jika tidak membaik dalam 30 menit, segera ke IGD</li>
-        </ul>
-    `
-    cardHeatStrokeEL.innerHTML = isi;
+    `).join('');
 }
 
 tampilPenanganan();
@@ -46,13 +108,6 @@ tampilPenanganan();
     const recommendationTitle = document.getElementById('recommendationTitle');
     const recommendationList = document.getElementById('recommendationList');
 
-    /**
-     * Kategori tingkat bahaya suhu berdasar OSHA Heat Index Guidelines,
-     * dirangkum dalam Kestrel Heat Index Reference Guide (mengacu NOAA/OSHA).
-     * Skala ini dipilih karena berbasis SUHU UDARA langsung (bukan heat index
-     * yang butuh data kelembapan tambahan), sesuai data yang tersedia dari BMKG.
-     * Sumber: OSHA Heat Index Guidelines, www.osha.gov/SLTC/heatillness/heat_index
-     */
     function getHeatCategory(suhu) {
         if (suhu > 46.1) {
             return {

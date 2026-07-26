@@ -9,14 +9,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--putih);
     color: var(--hitam);
     line-height: 1.6;
-    padding-top: 84px; /* kompensasi header fixed, sesuaikan dgn tinggi header kamu */
+    padding-top: 84px;
 }
 
-/* ===== WRAP (langsung konten, tanpa hero) ===== */
 .detect-wrap {
     max-width: 900px;
     margin: 0 auto;
@@ -39,11 +37,10 @@ body {
     max-width: 620px;
 }
 
-/* ===== CARD FORM ===== */
 .detect-card {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 18px;
+    border-radius: 8px;
     padding: 36px;
 }
 
@@ -62,7 +59,7 @@ body {
     align-items: center;
     gap: 10px;
     border: 2px solid var(--hitam);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 14px;
     cursor: pointer;
     transition: background 0.15s ease, border-color 0.15s ease;
@@ -94,30 +91,35 @@ body {
     border: 2px solid var(--hitam);
     cursor: pointer;
     padding: 14px 32px;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: background 0.2s ease;
 }
 
-.btn-primary:hover { background-color: var(--teal); }
+.btn-primary:hover {
+    color: var(--hitam);
+    background-color: var(--putih);
+    border: 2px solid var(--teal);
+}
 
 .btn-secondary {
     font-weight: 600;
     font-size: 1rem;
     color: var(--hitam);
-    background: transparent;
+    background-color: var(--putih);
     border: 2px solid var(--hitam);
     cursor: pointer;
     padding: 14px 24px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
-.btn-secondary:hover { background: var(--putih); border-color: var(--teal); color: var(--teal); }
+.btn-secondary:hover {
+    border: 2px solid var(--teal);
+}
 
-/* ===== RESULT ===== */
 .result-box {
     margin-top: 30px;
     border: 2px solid var(--hitam);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 28px;
     display: none;
 }

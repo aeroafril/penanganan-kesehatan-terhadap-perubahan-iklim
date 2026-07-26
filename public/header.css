@@ -57,19 +57,20 @@
     transition: background 0.12s linear, color 0.12s linear;
 }
 
-.main-nav a:not(.cart-pill):nth-of-type(3n+1):hover {
-    background: var(--teal);
-    color: var(--putih);
+.main-nav a:not(.cart-pill):hover {
+    color: var(--teal);
+    text-decoration: overline;
 }
 
-.main-nav a:not(.cart-pill):nth-of-type(3n+2):hover {
-    background: var(--tealMuda);
-    color: var(--hitam);
+.main-nav a.active {
+    color: var(--teal);
+    text-decoration: overline;
+    font-weight: 700;
 }
 
-.main-nav a:not(.cart-pill):nth-of-type(3n):hover {
-    background: var(--coklat);
-    color: var(--putih);
+.mobile-menu a.active {
+    color: var(--teal);
+    font-weight: 700;
 }
 
 .menu-toggle {
@@ -124,9 +125,9 @@
     transition: color 0.2s ease;
 }
 
-.mobile-menu a:nth-child(3n+1):hover { color: var(--teal); }
-.mobile-menu a:nth-child(3n+2):hover { color: var(--tealMuda); }
-.mobile-menu a:nth-child(3n):hover { color: var(--coklat); }
+.mobile-menu a:hover {
+    color: var(--teal);
+}
 
 .menu-overlay {
     position: fixed;
@@ -221,10 +222,10 @@
     width: 100%;
     text-align: left;
     background-color: #b50000;
-    border: 2px solid --hitam;
+    border: 2px solid var(--hitam);
     text-align: center;
     text-decoration: none;
-    color: var(--hitam);
+    color: var(--putih);
     font-size: 0.88rem;
     font-weight: 500;
     padding: 10px 12px;

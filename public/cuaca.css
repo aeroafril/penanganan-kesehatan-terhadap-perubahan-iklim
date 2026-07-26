@@ -61,7 +61,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 .state-box {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 50px 24px;
     text-align: center;
 }
@@ -80,7 +80,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
     color: var(--putih);
     border: 2px solid var(--hitam);
     padding: 10px 24px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.15s ease;
 }
@@ -90,7 +90,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 .day-nav {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 16px 20px;
     display: flex;
     align-items: center;
@@ -160,7 +160,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 .slot-card {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 22px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

@@ -9,14 +9,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--putih);
     color: var(--hitam);
     line-height: 1.6;
-    padding-top: 84px; /* kompensasi header fixed, sesuaikan dgn tinggi header kamu */
+    padding-top: 84px;
 }
 
-/* ===== WRAP (langsung konten, tanpa hero) ===== */
 .riwayat-wrap {
     max-width: 900px;
     margin: 0 auto;
@@ -54,21 +52,24 @@ body {
 .btn-clear {
     font-weight: 600;
     font-size: 0.88rem;
-    color: var(--hitam);
-    background: transparent;
+    color: var(--putih);
+    background-color: #b50000;
     border: 2px solid var(--hitam);
     cursor: pointer;
     padding: 10px 18px;
-    border-radius: 10px;
-    transition: background 0.15s ease, color 0.15s ease;
+    border-radius: 8px;
+    transition: background 0.15s ease;
 }
 
-.btn-clear:hover { background: var(--coklat); color: var(--putih); border-color: var(--coklat); }
+.btn-clear:hover {
+    background-color: var(--putih);
+    color: var(--hitam);
+}
 
 .riwayat-item {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 22px 24px;
     margin-bottom: 16px;
     position: relative;
@@ -88,12 +89,13 @@ body {
 .riwayat-date { font-size: 0.8rem; color: var(--coklat); margin-top: 2px; }
 
 .severity {
-    font-size: 0.72rem;
+    font-size: 12px;
     font-weight: 700;
+    margin: 0 40px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 5px 12px;
-    border-radius: 999px;
+    border-radius: 4px;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -133,7 +135,7 @@ body {
     text-align: center;
     padding: 60px 20px;
     border: 2px dashed var(--coklat);
-    border-radius: 16px;
+    border-radius: 8px;
     color: var(--coklat);
 }
 
@@ -149,11 +151,14 @@ body {
     background: var(--teal);
     text-decoration: none;
     padding: 12px 26px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .empty-state a:hover { background: var(--coklat); }
 
 @media (max-width: 600px) {
     .riwayat-top { flex-direction: column; }
+    .severity {
+        margin: 0;
+    }
 }

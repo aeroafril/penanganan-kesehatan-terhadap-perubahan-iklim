@@ -4,7 +4,7 @@ dataHeader = [
         text: "Dashboard"
     },{
         link: "penangananKesehatan.html",
-        text: "Penanganan"
+        text: "Panduan"
     },{
         link: "pendeteksiKesehatan.html",
         text: "Pendeteksi"
@@ -19,6 +19,13 @@ dataHeader = [
 
 const headerEl = document.getElementById("header");
 
+const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+
+function navLink(item) {
+    const isActive = item.link === currentPage;
+    return `<a href="${item.link}" class="${isActive ? 'active' : ''}">${item.text}</a>`;
+}
+
 const header = () => {
     let isiHeader = `
         <header class="site-header" id="siteHeader">
@@ -26,7 +33,7 @@ const header = () => {
                 <a href="#" class="logo"><img src="petik.png" alt="logoPetik"></a>
 
                 <nav class="main-nav">
-                    ${dataHeader.map(item => `<a href="${item.link}">${item.text}</a>`).join('')}
+                    ${dataHeader.map(navLink).join('')}
                 </nav>
 
                 <div class="header-actions">
@@ -52,7 +59,7 @@ const header = () => {
 
         <div class="menu-overlay" id="menuOverlay"></div>
         <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-            ${dataHeader.map(item => `<a href="${item.link}">${item.text}</a>`).join('')}
+            ${dataHeader.map(navLink).join('')}
         </nav>
     `;
     headerEl.innerHTML = isiHeader;
@@ -90,7 +97,6 @@ async function loadProfile() {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-        // belum login, lempar balik ke halaman login
         window.location.href = 'index.html';
         return;
     }
@@ -99,7 +105,7 @@ async function loadProfile() {
         const response = await fetch('/api/me', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}` // kirim token biar backend tau ini siapa
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -109,7 +115,6 @@ async function loadProfile() {
             document.getElementById('profileName').textContent = `${data.user.firstName} ${data.user.lastName}`;
             document.getElementById('profileEmail').textContent = data.user.email;
         } else {
-            // token invalid/expired -> paksa login ulang
             localStorage.removeItem('authToken');
             localStorage.removeItem('currentUser');
             window.location.href = 'index.html';

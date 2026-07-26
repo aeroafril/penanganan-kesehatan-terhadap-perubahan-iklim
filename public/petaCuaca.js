@@ -17,27 +17,23 @@
     };
 
     function getWeatherIcon(code) {
-        if (code === 0 || code === 1) return '☀️';
-        if (code === 2 || code === 3) return '⛅';
-        if (code === 4) return '☁️';
-        if (code >= 61 && code <= 67) return '🌧️';
-        if (code >= 80 && code <= 82) return '🌦️';
-        if (code >= 95) return '⛈️';
-        return '☁️';
+        if (code === 0 || code === 1) return '/cuaca/cerah.png';
+        if (code === 2 || code === 3) return '/cuaca/cerahBerawan.png';
+        if (code === 4) return '/cuaca/berawan.png';
+        if (code === 5 || code === 10) return '/cuaca/berawanTebal.png';
+        if (code >= 45 && code <= 48) return '/cuaca/berawanTebal.png';
+        if (code >= 60 && code <= 67) return '/cuaca/hujan.png'; // digabung, sebelumnya overlap 60-63 & 61-67
+        if (code >= 80 && code <= 82) return '/cuaca/hujanPetir.png';
+        if (code >= 95) return '/cuaca/awanPetir.png';
+        return '/cuaca/berawan.png';
     }
 
-    // ===== Setup peta Leaflet (OpenStreetMap, gratis, tanpa API key) =====
-    // Titik tengah kira-kira di tengah Indonesia, zoom level 5 supaya seluruh
-    // wilayah dari Sumatera sampai Papua kelihatan.
     const map = L.map('mapInner').setView([-2.5, 118], 5);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 18,
+    L.maplibreGL({
+        style: 'https://tiles.openfreemap.org/styles/bright',
     }).addTo(map);
 
-    // Simpan referensi marker per kota (key: adm2), supaya bisa diupdate
-    // warna/isi popup-nya setelah data cuaca datang, tanpa gambar ulang peta.
     const markers = {};
 
     function makeDivIcon(color, label) {
@@ -72,7 +68,7 @@
                         <h3>${city.name}</h3>
                         <span class="city-province">${city.province}</span>
                     </div>
-                    <span class="city-icon">⏳</span>
+                    <span class="city-icon"><img src="" alt="" class="city-icon-img"></span>
                 </div>
                 <div class="city-temp">--°</div>
                 <div class="city-desc">Memuat...</div>
@@ -104,7 +100,11 @@
         if (!el) return;
         el.classList.remove('loading');
         el.classList.add(tempCategory(temp));
-        el.querySelector('.city-icon').textContent = getWeatherIcon(weatherCode);
+
+        const img = el.querySelector('.city-icon img');
+        img.src = getWeatherIcon(weatherCode);
+        img.alt = desc;
+
         el.querySelector('.city-temp').textContent = `${temp}°`;
         el.querySelector('.city-desc').textContent = desc;
 
@@ -119,14 +119,16 @@
         if (!el) return;
         el.classList.remove('loading');
         el.classList.add('error');
-        el.querySelector('.city-icon').textContent = '⚠️';
+
+        const img = el.querySelector('.city-icon img');
+        img.src = '404';
+        img.alt = 'Data tidak tersedia';
+
         el.querySelector('.city-desc').textContent = 'Data tidak tersedia';
     }
 
     async function fetchCityWeather(city) {
         try {
-            // buildBmkgUrl butuh adm4 (kode kelurahan) -- itu satu-satunya
-            // parameter yang resmi didukung BMKG.
             const res = await fetch(PETIK_CONFIG.buildBmkgUrl(city.adm4));
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
@@ -161,9 +163,6 @@
             renderSkeleton();
         }
 
-        // Muat kota secara bertahap (per batch kecil), bukan 31 sekaligus.
-        // Ini mengurangi kemungkinan burst request nge-hit rate limit BMKG
-        // sebelum cache di backend sempat "kepanaskan".
         const BATCH_SIZE = 5;
         const BATCH_DELAY_MS = 400;
 

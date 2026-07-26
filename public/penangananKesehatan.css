@@ -9,16 +9,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--putih);
     color: var(--hitam);
     line-height: 1.6;
-    padding-top: 84px; /* kompensasi header fixed, sesuaikan dgn tinggi header kamu */
+    padding-top: 84px;
 }
 
 .hidden { display: none; }
 
-/* ===== CONTENT WRAP (langsung konten, tanpa hero) ===== */
 .content-wrap {
     max-width: 1100px;
     margin: 0 auto;
@@ -158,7 +156,7 @@ body {
 
 .guide-card:hover {
     transform: translateY(-4px);
-    box-shadow: 6px 6px 0 var(--coklat);
+    box-shadow: 0 6px 0 var(--hitam);
 }
 
 .guide-card.highlight {

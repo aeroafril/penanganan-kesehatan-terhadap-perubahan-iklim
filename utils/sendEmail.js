@@ -1,10 +1,10 @@
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 
-// Transporter dibuat sekali, dipakai berkali-kali
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: Number(process.env.EMAIL_PORT),
-    secure: process.env.EMAIL_SECURE === 'true', // true untuk port 465, false untuk 587
+    secure: process.env.EMAIL_SECURE === 'true',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -44,4 +44,28 @@ async function sendResetPasswordEmail(toEmail, firstName, resetLink) {
     });
 }
 
-module.exports = { sendResetPasswordEmail };
+async function sendSuggestionEmail(userMessage) {
+    const html = `
+        <div style="font-family: Segoe UI, Arial, sans-serif; max-width: 480px; margin: 0 auto; background: #FDF6E2; padding: 32px; border-radius: 12px;">
+            <h2 style="color: #4A3B32; margin-bottom: 16px;">Saran Baru dari Website PETIK</h2>
+            <p style="color: #000; font-size: 14px; line-height: 1.6;">
+                Kamu menerima saran atau masukan baru dari pengunjung website:
+            </p>
+            <blockquote style="background: #fff; padding: 16px; border-left: 4px solid #4A7C74; margin: 16px 0; border-radius: 4px; color: #333; font-size: 14px;">
+                "${userMessage}"
+            </blockquote>
+            <p style="color: #999; font-size: 11px; margin-top: 24px;">
+                Email ini dikirim otomatis dari sistem website PETIK.
+            </p>
+        </div>
+    `;
+
+    await transporter.sendMail({
+        from: process.env.EMAIL_FROM,
+        to: process.env.EMAIL_USER,
+        subject: 'Saran Baru dari Pengunjung PETIK',
+        html
+    });
+}
+
+module.exports = { sendResetPasswordEmail, sendSuggestionEmail };

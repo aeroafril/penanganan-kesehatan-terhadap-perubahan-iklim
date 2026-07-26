@@ -9,16 +9,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--putih);
     color: var(--hitam);
     line-height: 1.6;
-    padding-top: 84px; /* kompensasi header fixed, sesuaikan dgn tinggi header kamu */
+    padding-top: 84px;
 }
 
 .hidden { display: none; }
 
-/* ===== WRAP ===== */
 .peta-wrap {
     max-width: 1100px;
     margin: 0 auto;
@@ -47,24 +45,31 @@ body {
 }
 
 .btn-refresh {
-    font-weight: 600;
-    font-size: 0.9rem;
+    background: var(--teal);
+    font-size: 16px;
     color: var(--hitam);
-    background: var(--putih);
+    display: flex;
     border: 2px solid var(--hitam);
     padding: 10px 18px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
+    gap: 8px;
     transition: background 0.15s ease;
 }
 
-.btn-refresh:hover { background: var(--tealMuda); }
+.btn-refresh img{
+    width: 20px;
+}
 
-/* ===== MAP ===== */
+.btn-refresh:hover {
+    border: 2px solid var(--teal);
+    background: var(--putih);
+}
+
 .map-panel {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 18px;
+    border-radius: 8px;
     padding: 18px;
     margin-bottom: 40px;
 }
@@ -78,7 +83,7 @@ body {
         linear-gradient(90deg, var(--tealMuda) 1px, transparent 1px);
     background-size: 8.33% 12.5%;
     background-color: rgba(143, 184, 175, 0.08);
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
 }
 
@@ -131,7 +136,7 @@ body {
     color: var(--hitam);
     background: var(--putih);
     padding: 1px 5px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--hitam);
     white-space: nowrap;
 }
@@ -159,13 +164,11 @@ body {
 .dot-warm { background: var(--teal); }
 .dot-hot { background: var(--coklat); }
 
-/* ===== SECTION ===== */
 .section-title {
     font-size: 1.3rem;
     margin-bottom: 18px;
 }
 
-/* ===== CITY GRID ===== */
 .city-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -175,7 +178,7 @@ body {
 .city-card {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 18px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -183,13 +186,13 @@ body {
 
 .city-card:hover {
     transform: translateY(-3px);
-    box-shadow: 5px 5px 0 var(--coklat);
+    box-shadow: 0 5px 0 var(--hitam);
 }
 
 .city-card.loading { opacity: 0.6; cursor: default; }
 .city-card.loading:hover { transform: none; box-shadow: none; }
 
-.city-card.hot { border-color: var(--coklat); }
+.city-card.hot { border-color: #b50000; }
 .city-card.warm { border-color: var(--teal); }
 
 .city-card-top {
@@ -206,7 +209,11 @@ body {
     color: var(--coklat);
 }
 
-.city-icon { font-size: 1.4rem; }
+.city-icon img{ 
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
 
 .city-temp {
     font-size: 1.8rem;
