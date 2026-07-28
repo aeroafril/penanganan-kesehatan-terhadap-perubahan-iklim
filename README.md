@@ -1,18 +1,18 @@
-# PETIK — Penanganan Kesehatan Terhadap Perubahan Iklim
+# PETIK (Penanganan Kesehatan Terhadap Perubahan Iklim)
 
 Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan iklim — mulai dari cuaca ekstrem, kualitas udara, hingga deteksi awal gejala penyakit yang mungkin muncul akibatnya.
 
-🔗 **Live demo:** [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-kesehatan-terhadap-perub.vercel.app/dashboard.html)
+**Live demo:** [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-kesehatan-terhadap-perub.vercel.app/dashboard.html)
 
 ## Fitur Utama
 
-- **Autentikasi pengguna** — registrasi & login dengan password ter-enkripsi (bcrypt), sesi menggunakan JWT, serta fitur lupa/reset password lewat email.
-- **Cuaca real-time** — data cuaca (suhu, kelembapan, angin, curah hujan) langsung dari BMKG untuk 31 kota besar di Indonesia.
-- **Peta cuaca interaktif** — visualisasi lokasi & kondisi cuaca tiap kota di peta (Leaflet + vector tiles OpenFreeMap).
-- **Pendeteksi gejala kesehatan** — sistem pakar rule-based untuk mengidentifikasi 6 indikasi kondisi kesehatan yang berkaitan dengan cuaca (heat stroke, dehidrasi, ISPA, iritasi polusi, DBD, gangguan pencernaan).
-- **Panduan penanganan kesehatan** — informasi gejala dan langkah penanganan untuk tiap kondisi, disusun berdasarkan regulasi Kemenkes.
-- **Riwayat kesehatan** — menyimpan histori hasil deteksi gejala pengguna.
-- **Form saran** — pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
+- **Autentikasi pengguna:** registrasi & login dengan password ter-enkripsi (bcrypt), sesi menggunakan JWT, serta fitur lupa/reset password lewat email.
+- **Cuaca real-time:** data cuaca (suhu, kelembapan, angin, curah hujan) langsung dari BMKG untuk 31 kota besar di Indonesia.
+- **Peta cuaca interaktif:** visualisasi lokasi & kondisi cuaca tiap kota di peta (Leaflet + vector tiles OpenFreeMap).
+- **Pendeteksi gejala kesehatan:** sistem pakar rule-based untuk mengidentifikasi 6 indikasi kondisi kesehatan yang berkaitan dengan cuaca (heat stroke, dehidrasi, ISPA, iritasi polusi, DBD, gangguan pencernaan).
+- **Panduan penanganan kesehatan:** informasi gejala dan langkah penanganan untuk tiap kondisi, disusun berdasarkan regulasi Kemenkes.
+- **Riwayat kesehatan:** menyimpan histori hasil deteksi gejala pengguna.
+- **Form saran** pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
 
 ## Teknologi
 
