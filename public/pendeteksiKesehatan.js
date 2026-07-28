@@ -1,4 +1,3 @@
-// Basis aturan sistem pakar sederhana (rule-based)
 const rules = [
     {
         key: 'heatstroke',
@@ -124,7 +123,6 @@ document.getElementById('detectBtn').addEventListener('click', () => {
     document.getElementById('resultRecommendation').textContent = 'Rekomendasi: ' + hasil.rekomendasi;
     resultBox.classList.add('show');
 
-    // simpan ke riwayat (localStorage)
     try {
         const riwayat = JSON.parse(localStorage.getItem('riwayatKesehatan') || '[]');
         riwayat.unshift({

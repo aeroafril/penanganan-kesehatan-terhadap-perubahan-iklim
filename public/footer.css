@@ -104,13 +104,29 @@
     cursor: pointer;
     padding: 16px 44px;
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
     transition: background 0.2s ease;
 }
 
 .contact-submit:hover {
-    border: 2px solid var(--teal);
+    transform: translateY(-2px);
+    color: var(--hitam);
+    border-color: var(--teal);
+}
+ 
+.contact-submit::before{
+    content: "";
+    position: absolute;
+    inset: 0;
     background-color: var(--putih);
-    color: var(--hitam)
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+ 
+.contact-submit:hover::before{
+    transform: translateY(0);
 }
 
 .form-status {
@@ -133,42 +149,97 @@
     display: flex;
     height: 80vh;
     flex-direction: column;
-    gap: 8px;
     align-items: center;
 }
 
 .logoFooter img{
     filter: brightness(0) invert(1);
-    width: 80px;
-}
-.logoFooter h4{
-    color:var(--putih);
-    margin: 10px;
-    padding: 8px;
-}
-
-.footer-meta p{
-    margin-top: 60px;
-    color: var(--putih);
-    font-size: 15px;
-}
-
-.footer-meta p b{
-    font-size: 16px;
-
+    width: 62px;
 }
 
 .footer-links {
     display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-weight: 500;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    margin: 16px;
 }
 
-.footer-links img {
-    position: relative;
-    width: 50px;
+.team-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 200px;
+    margin-top: 24px;
+}
+
+.team-member{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+}
+
+.team-name{
+    color: var(--putih);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.team-role{
+    margin-top: 4px;
+    color: var(--tealMuda);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.team-social{
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.team-social a{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--putih);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.team-social a:hover{
+    background: var(--teal);
+    transform: translateY(-2px);
+}
+
+.team-social img{
+    width: 24px;
+    height: 24px;
+}
+
+.footer-meta p{
+    color: var(--putih);
+    font-size: 15px;
+    padding: 8px;
+    margin: 16px;
+}
+
+.garis {
+  height: 1px;
+  background-color: var(--putih);
+  width: 100%;
+  padding: 1px;
+  margin: 16px;
+}
+
+.kopiKanan p b{
+    font-size: 16px;
+    padding: 8px;
+    margin: 16px;
 }
 
 @media (max-width: 480px) {
@@ -182,6 +253,15 @@
     }
 
     .footer-meta p{
-        margin-top: 100px;
+        margin-top: 40px;
+    }
+
+    .footer-meta{
+        height: auto;
+        padding: 50px 24px;
+    }
+
+    .team-list{
+        gap: 24px;
     }
 }

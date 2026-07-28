@@ -1,6 +1,54 @@
+const dataTeam = [
+    {
+        nama: "Aero Afril",
+        peran: "Fullstack Website",
+        instagram: "/medsos/instagram.png",
+        linkig: "https://www.instagram.com/ar_frildo/",
+        github: "/medsos/github.png",
+        linkgt: "https://github.com/aeroafril",
+        linkedin: "/medsos/linkedin.png",
+        linklkn: "https://www.linkedin.com/in/aeroafril"
+    },
+    {
+        nama: "Risky Adi",
+        peran: "UI/UX Designer",
+        instagram: "/medsos/instagram.png",
+        linkig: "https://www.instagram.com/risk_a.s27/",
+        github: "/medsos/github.png",
+        linkgt: "https://github.com/Riezk2705"
+    },
+    {
+        nama: "Patricia",
+        peran: "Proposal & Dokumentasi",
+        instagram: "/medsos/instagram.png",
+        linkig: "https://www.instagram.com/_pptcya/"
+    }
+];
+
 const footerEl = document.getElementById("footer");
 
+function socialIcon(iconSrc, link, label) {
+    if (!iconSrc || !link) return '';
+    return `
+        <a href="${link}" target="_blank" rel="noopener" aria-label="${label}">
+            <img src="${iconSrc}" alt="${label}">
+        </a>
+    `;
+}
+
 const footer = () => {
+    const teamHtml = dataTeam.map(member => `
+        <div class="team-member">
+            <span class="team-name">${member.nama}</span>
+            <span class="team-role">${member.peran}</span>
+            <div class="team-social">
+                ${socialIcon(member.instagram, member.linkig, `Instagram ${member.nama}`)}
+                ${socialIcon(member.github, member.linkgt, `GitHub ${member.nama}`)}
+                ${socialIcon(member.linkedin, member.linklkn, `LinkedIn ${member.nama}`)}
+            </div>
+        </div>
+    `).join('');
+
     let isiFooter = `
         <footer class="footer" id="contact">
             <div class="batas"></div>
@@ -23,13 +71,17 @@ const footer = () => {
             <div class="footer-meta">
                 <div class="logoFooter">
                     <img src="petik.png" alt="logoPetik">
-                    <h4>PETIK</h4>
                 </div>
                 <nav class="footer-links">
-                    <h1>Pembuat</h1>
+                    <div class="team-list">
+                        ${teamHtml}
+                    </div>
                 </nav>
                 <p>Terima kasih telah mengunjungi Webside Kami :)</p>
-                <p><b>Copyright © 2026, Pradipta</b></p>
+                <div class="garis"></div>
+                <div class="kopiKanan">
+                    <p><b>Copyright © 2026, Saya Akan Lawan</b></p>
+                </div>
             </div>
         </footer>
     `;

@@ -18,9 +18,6 @@
     let lokasi = null;
     let selectedDay = 0;
 
-    // ===== Isi dropdown pilihan kota dari cities.js =====
-    // Value dropdown pakai adm2 (identitas kota yang gampang dibaca), tapi
-    // request cuaca yang sebenarnya tetap pakai adm4 kota tersebut (lihat config.js).
     function populateCitySelect() {
         const current = PETIK_CONFIG.CURRENT_CITY;
         citySelect.innerHTML = PETIK_CITIES.map(city =>
@@ -31,7 +28,7 @@
     citySelect.addEventListener('change', () => {
         const picked = PETIK_CITIES.find(c => c.adm2 === citySelect.value);
         if (picked) {
-            PETIK_CONFIG.setSelectedCity(picked); // otomatis tersimpan permanen, kepakai di semua halaman lain
+            PETIK_CONFIG.setSelectedCity(picked);
             fetchWeather();
         }
     });
@@ -65,7 +62,6 @@
 
     async function fetchWeather() {
         try {
-            // PETIK_CONFIG.BMKG_URL otomatis pakai kode adm4 kota yang lagi aktif
             const res = await fetch(PETIK_CONFIG.BMKG_URL);
 
             if (!res.ok) {

@@ -4,7 +4,7 @@ dataHeader = [
         text: "Dashboard"
     },{
         link: "penangananKesehatan.html",
-        text: "Panduan"
+        text: "Penanganan"
     },{
         link: "pendeteksiKesehatan.html",
         text: "Pendeteksi"

@@ -39,11 +39,10 @@ body {
     max-width: 640px;
 }
 
-/* ===== CONDITION BANNER ===== */
 .condition-banner {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 18px 26px;
     display: flex;
     align-items: center;
@@ -75,11 +74,10 @@ body {
     color: var(--coklat);
     background: var(--tealMuda);
     padding: 6px 12px;
-    border-radius: 999px;
+    border-radius: 4px;
     white-space: nowrap;
 }
 
-/* Level bahaya suhu berdasar skala OSHA (borders/dot berubah warna sesuai kategori, tetap dalam palet yang ada) */
 .condition-banner.level-lower { border-color: var(--teal); }
 .condition-banner.level-lower .dot { background: var(--teal); }
 
@@ -97,11 +95,10 @@ body {
 .condition-banner.level-high .badge,
 .condition-banner.level-very_high .badge { background: var(--coklat); color: var(--putih); }
 
-/* ===== REKOMENDASI DINAMIS ===== */
 .recommendation-box {
     background: var(--coklat);
     color: var(--putih);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 22px 26px;
     margin-bottom: 32px;
 }
@@ -127,7 +124,6 @@ body {
     margin-top: 24px;
 }
 
-/* ===== SECTION ===== */
 .section-title {
     font-size: 1.4rem;
     margin-bottom: 6px;
@@ -139,7 +135,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* ===== GUIDE CARDS ===== */
 .guide-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -149,7 +144,7 @@ body {
 .guide-card {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 26px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -174,7 +169,7 @@ body {
 .guide-icon {
     width: 46px;
     height: 46px;
-    border-radius: 12px;
+    border-radius: 8px;
     background: var(--teal);
     color: var(--putih);
     display: flex;
@@ -195,7 +190,7 @@ body {
     color: var(--coklat);
     background: var(--tealMuda);
     padding: 3px 10px;
-    border-radius: 999px;
+    border-radius: 4px;
     margin-top: 3px;
 }
 
@@ -218,7 +213,7 @@ body {
     margin-top: 50px;
     background: var(--coklat);
     color: var(--putih);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 22px 28px;
     font-size: 0.9rem;
 }

@@ -108,13 +108,28 @@
     border: 2px solid var(--hitam);
     border-radius: 8px;
     padding: 10px;
+    position: relative;
+    overflow: hidden;
     transition: background 0.2s ease;
 }
 
 .weather-detail-btn:hover {
-    background: var(--putih);
+    transform: translateY(-2px);
     color: var(--hitam);
-    border: 2px solid var(--hitam);
+}
+ 
+.weather-detail-btn::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--putih);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+ 
+.weather-detail-btn:hover::before{
+    transform: translateY(0);
 }
 
 @media (max-width: 768px) {

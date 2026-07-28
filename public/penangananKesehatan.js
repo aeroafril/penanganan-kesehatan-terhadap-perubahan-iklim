@@ -66,6 +66,40 @@ const dataPenanganan = [
             "Pantau suhu tubuh secara berkala",
             "Segera periksa ke fasilitas kesehatan bila demam &gt;2 hari"
         ]
+    },
+    {
+        id: "iritasiPolusi",
+        judul: "Iritasi Akibat Polusi Udara",
+        tag: "Polusi udara tinggi",
+        gejala: [
+            "Mata perih dan berair",
+            "Batuk ringan",
+            "Tenggorokan gatal atau kering",
+            "Kulit terasa tidak nyaman"
+        ],
+        langkah: [
+            "Bilas mata dengan air bersih",
+            "Gunakan masker saat beraktivitas di luar ruangan",
+            "Hindari area dengan tingkat polusi tinggi",
+            "Periksa ke dokter bila iritasi tidak kunjung membaik"
+        ]
+    },
+    {
+        id: "gangguanPencernaan",
+        judul: "Gangguan Pencernaan",
+        tag: "Kualitas air/makanan terdampak cuaca",
+        gejala: [
+            "Diare",
+            "Mual dan muntah",
+            "Nyeri perut",
+            "Lemas akibat kehilangan cairan tubuh"
+        ],
+        langkah: [
+            "Perbanyak minum cairan elektrolit",
+            "Konsumsi makanan ringan dan mudah dicerna",
+            "Istirahat yang cukup",
+            "Konsultasi dokter bila berlangsung lebih dari 2 hari"
+        ]
     }
 ];
 

@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 99999;
+    z-index: 9999;
     background: var(--putih);
 }
 
@@ -54,12 +54,12 @@
     color: var(--hitam);
     padding: 6px 12px;
     border-radius: 6px;
-    transition: background 0.12s linear, color 0.12s linear;
 }
 
 .main-nav a:not(.cart-pill):hover {
     color: var(--teal);
     text-decoration: overline;
+    transition: all 0.24s ease;
 }
 
 .main-nav a.active {
@@ -101,9 +101,10 @@
     top: 0;
     right: -100%;
     width: 200px;
-    height: 60vh;
+    height: 55vh;
     background: var(--hitam);
-    z-index: 200;
+    z-index: 5555;
+    border-radius: 8px;
     transition: right 0.4s cubic-bezier(0.77, 0, 0.18, 1);
     overflow-y: auto;
     padding: 80px 40px;
@@ -231,13 +232,30 @@
     padding: 10px 12px;
     border-radius: 8px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
     transition: background 0.15s ease;
     color: var(--putih);
 }
 
 .logout-btn:hover {
-    background-color: var(--putih);
+    transform: translateY(-2px);
     color: var(--hitam);
+    border-color: #b50000;
+}
+ 
+.logout-btn::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--putih);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+ 
+.logout-btn:hover::before{
+    transform: translateY(0);
 }
 
 @media (max-width: 768px) {

@@ -58,6 +58,12 @@ h1, h2, h3 { letter-spacing: -0.01em; }
     opacity: 0.8;
 }
 
+.city-select{
+    background-color: var(--putih);
+    border: 2px solid var(--hitam);
+    border-radius: 4px;
+}
+
 .state-box {
     background: var(--putih);
     border: 2px solid var(--hitam);
@@ -167,7 +173,7 @@ h1, h2, h3 { letter-spacing: -0.01em; }
 
 .slot-card:hover {
     transform: translateY(-4px);
-    box-shadow: 6px 6px 0 var(--coklat);
+    box-shadow: 0 6px 0 var(--coklat);
 }
 
 .slot-card.now {

@@ -32,7 +32,7 @@ function render() {
     if (riwayat.length === 0) {
         riwayatList.innerHTML = `
             <div class="empty-state">
-                <div class="icon">🩺</div>
+                <a href="pendeteksiKesehatan.html"><img src="plus.png" alt="gambarPlus"></a>
                 <h3>Belum ada riwayat kesehatan</h3>
                 <p>Hasil deteksi gejala yang kamu lakukan akan muncul di sini.</p>
                 <a href="pendeteksiKesehatan.html">Mulai Deteksi Sekarang</a>
@@ -46,7 +46,9 @@ function render() {
 
     riwayatList.innerHTML = riwayat.map((item, index) => `
         <div class="riwayat-item">
-            <button class="btn-delete" data-index="${index}" title="Hapus catatan ini">✕</button>
+            <button class="btn-delete" data-index="${index}" title="Hapus catatan ini">
+                <img src="xbtn.png" alt="xbtn">
+            </button>
             <div class="riwayat-top">
                 <div>
                     <h3>${item.indikasi}</h3>

@@ -67,20 +67,36 @@ body{
     margin-top: 36px;
     width: fit-content;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 18px;
     background-color: var(--coklat);
     color: var(--putih);
     border: 2px solid var(--hitam);
     text-decoration: none;
-    padding: 16px 40px;
+    padding: 16px 44px;
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
     transition: background 0.2s ease;
 }
 
-.hero-cta:hover{
-    background-color: var(--putih);
+.hero-cta:hover {
+    transform: translateY(-2px);
     color: var(--hitam);
-    border: 2px solid var(--teal);
+    border-color: var(--teal);
+}
+ 
+.hero-cta::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--putih);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+ 
+.hero-cta:hover::before{
+    transform: translateY(0);
 }
 
 .hero-right{
@@ -149,6 +165,12 @@ body{
     height: 96%;
     object-fit: cover;
     border-radius: 4px;
+}
+
+.hero-float img:hover{
+    width: 110%;
+    height: 110%;
+    transition: all 0.24s ease;
 }
 
 @keyframes hero-bob {
@@ -221,7 +243,7 @@ body{
 }
 
 .hero-arrow:hover{
-    background-color: var(--tealMuda);
+    background-color: var(--coklat);
 }
 
 .hero-arrow img{
@@ -286,7 +308,7 @@ body{
 .about-item{
     background-color: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 26px 22px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
@@ -367,4 +389,8 @@ body{
     .hero-badge{ top: 24px; right: 24px; }
     .about-grid{ grid-template-columns: 1fr; }
     .about-section{ padding: 60px 20px; }
+    .hero-cta{
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
 }

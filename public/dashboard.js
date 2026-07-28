@@ -1,21 +1,21 @@
 const dataContent = [
     {
-    img: "https://i.pinimg.com/originals/f7/9e/52/f79e5203f41bdaaf1a5b4176f98a8736.jpg",
-    judul: "Panduan Kesehatan",
-    link: "penangananKesehatan",
-    text: "Panduan cepat menghadapi cuaca ekstrem"
+        img: "/dashboard/panduan.png",
+        judul: "Penanganan Kesehatan",
+        link: "penangananKesehatan",
+        text: "Penanganan cepat menghadapi cuaca ekstrem"
     },{
-        img: "https://i.pinimg.com/originals/f7/9e/52/f79e5203f41bdaaf1a5b4176f98a8736.jpg",
+        img: "/dashboard/pendeteksi.png",
         judul: "Pendeteksi Kesehatan",
         link: "pendeteksiKesehatan",
         text: "Cek gejala, kenali indikasi lebih awal"
     },{
-        img: "https://i.pinimg.com/originals/f7/9e/52/f79e5203f41bdaaf1a5b4176f98a8736.jpg",
+        img: "/dashboard/peta.png",
         judul: "Peta Cuaca",
         link: "petaCuaca",
         text: "Kondisi cuaca kota-kota di Indonesia"
     },{
-        img: "https://i.pinimg.com/originals/f7/9e/52/f79e5203f41bdaaf1a5b4176f98a8736.jpg",
+        img: "/dashboard/riwayat.png",
         judul: "Riwayat Kesehatan",
         link: "riwayatKesehatan",
         text: "Semua hasil deteksimu, tersimpan rapi"
@@ -45,7 +45,7 @@ function renderHero() {
                 <p class="hero-eyebrow">Welcome, <span id="dashboardName">Anonymous</span></p>
                 <h1 class="hero-title bungee-regular">PETIK</h1>
                 <p class="hero-desc">Pantau cuaca dan kelola kesehatan kamu di tengah perubahan iklim, semua dalam satu tempat.</p>
-                <button class="hero-cta" id="heroCta">Dokumentasi</button>
+                <button class="hero-cta" id="heroCta">About</button>
             </div>
             <div class="hero-right" id="heroRight">
                 <button class="hero-arrow hero-arrow-left" id="heroPrev" aria-label="Fitur sebelumnya">

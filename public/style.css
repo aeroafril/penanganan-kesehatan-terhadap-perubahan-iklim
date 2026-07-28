@@ -29,11 +29,11 @@ body {
 }
 
 .judulLogin img {
-    width: 120px;
+    width: 100px;
 }
 
 .judulLogin h1 {
-    font-size: 120px;
+    font-size: 90px;
     color: var(--putih);
     padding: 15px;
     z-index: 1;
@@ -50,7 +50,7 @@ body {
 .AunthContainer {
     background: var(--putih);
     border: 2px solid var(--hitam);
-    border-radius: 15px;
+    border-radius: 8px;
     overflow: hidden;
     margin: 20px;
     padding: 15px;
@@ -169,13 +169,29 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
-
+ 
 button:hover {
     transform: translateY(-2px);
-    background-color: var(--putih);
     color: var(--hitam);
     border-color: var(--teal);
+}
+ 
+button::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--putih);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+ 
+button:hover::before{
+    transform: translateY(0);
 }
 
 button:active {
@@ -240,25 +256,18 @@ button:disabled {
     to { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 940px) {
     .container {
         flex-direction: column;
-        gap: 40px;
+        gap: 4px;
     }
 
     .judulLogin img {
-        width: 100px;
+        width: 65px;
     }
 
     .judulLogin h1 {
-        font-size: 80px;
-    }
-
-    body.register-mode .judulLogin {
-        position: static;
-        top: auto;
-        left: auto;
-        transform: none;
+        font-size: 60px;
     }
 
     .form-container {
