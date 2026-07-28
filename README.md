@@ -27,10 +27,10 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 
 ## Sumber Data
 
-- **Cuaca** — [BMKG](https://data.bmkg.go.id/prakiraan-cuaca/) (Badan Meteorologi, Klimatologi, dan Geofisika)
-- **Kategori & penanganan kesehatan** — Permenkes No. 35 Tahun 2012, Permenkes No. 1018/Menkes/Per/V/2011, publikasi resmi Kemenkes RI, Kepmenkes No. HK.01.07/Menkes/532/2019, RAN-APIK 2020
-- **Kode wilayah administratif** — [cahyadsn/wilayah](https://github.com/cahyadsn/wilayah) (berbasis data Kepmendagri)
-- **Peta** — OpenStreetMap via OpenFreeMap
+- **Cuaca:** [BMKG](https://data.bmkg.go.id/prakiraan-cuaca/) (Badan Meteorologi, Klimatologi, dan Geofisika)
+- **Kategori & penanganan kesehatan:** Permenkes No. 35 Tahun 2012, Permenkes No. 1018/Menkes/Per/V/2011, publikasi resmi Kemenkes RI, Kepmenkes No. HK.01.07/Menkes/532/2019, RAN-APIK 2020
+- **Kode wilayah administratif:** [cahyadsn/wilayah](https://github.com/cahyadsn/wilayah) (berbasis data Kepmendagri)
+- **Peta:** OpenStreetMap via OpenFreeMap
 
 ## Struktur Proyek
 
