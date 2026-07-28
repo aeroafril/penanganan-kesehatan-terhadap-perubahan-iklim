@@ -1,6 +1,6 @@
 # PETIK (Penanganan Kesehatan Terhadap Perubahan Iklim)
 
-Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan iklim — mulai dari cuaca ekstrem, kualitas udara, hingga deteksi awal gejala penyakit yang mungkin muncul akibatnya.
+Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan iklim, mulai dari cuaca ekstrem, kualitas udara, hingga deteksi awal gejala penyakit yang mungkin muncul akibatnya.
 
 **Live demo:** [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-kesehatan-terhadap-perub.vercel.app/dashboard.html)
 
