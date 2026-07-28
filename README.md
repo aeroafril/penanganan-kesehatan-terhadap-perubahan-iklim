@@ -1,10 +1,10 @@
-"# penanganan-kesehatan-terhadap-perubahan-iklim" 
-
 # PETIK — Penanganan Kesehatan Terhadap Perubahan Iklim
 
 Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan iklim — mulai dari cuaca ekstrem, kualitas udara, hingga deteksi awal gejala penyakit yang mungkin muncul akibatnya.
 
-## ✨ Fitur Utama
+🔗 **Live demo:** [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-kesehatan-terhadap-perub.vercel.app/dashboard.html)
+
+## Fitur Utama
 
 - **Autentikasi pengguna** — registrasi & login dengan password ter-enkripsi (bcrypt), sesi menggunakan JWT, serta fitur lupa/reset password lewat email.
 - **Cuaca real-time** — data cuaca (suhu, kelembapan, angin, curah hujan) langsung dari BMKG untuk 31 kota besar di Indonesia.
@@ -14,7 +14,7 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 - **Riwayat kesehatan** — menyimpan histori hasil deteksi gejala pengguna.
 - **Form saran** — pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
 
-## 🛠️ Teknologi
+## Teknologi
 
 | Bagian | Teknologi |
 |---|---|
@@ -25,14 +25,14 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 | Peta | Leaflet, MapLibre GL (OpenFreeMap) |
 | Hosting/Deployment | Vercel |
 
-## 📊 Sumber Data
+## Sumber Data
 
 - **Cuaca** — [BMKG](https://data.bmkg.go.id/prakiraan-cuaca/) (Badan Meteorologi, Klimatologi, dan Geofisika)
 - **Kategori & penanganan kesehatan** — Permenkes No. 35 Tahun 2012, Permenkes No. 1018/Menkes/Per/V/2011, publikasi resmi Kemenkes RI, Kepmenkes No. HK.01.07/Menkes/532/2019, RAN-APIK 2020
 - **Kode wilayah administratif** — [cahyadsn/wilayah](https://github.com/cahyadsn/wilayah) (berbasis data Kepmendagri)
 - **Peta** — OpenStreetMap via OpenFreeMap
 
-## 📁 Struktur Proyek
+## Struktur Proyek
 
 ```
 ├── config/
@@ -51,7 +51,7 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 └── vercel.json               # konfigurasi deployment Vercel
 ```
 
-## 🚀 Menjalankan di Lokal
+## Menjalankan di Lokal
 
 1. Clone repository ini dan install dependencies:
    ```bash
@@ -72,13 +72,15 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
    ```
    Server berjalan di `http://localhost:5000`.
 
-## ☁️ Deployment
+## Deployment
+
+Live: [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-kesehatan-terhadap-perub.vercel.app/dashboard.html)
 
 Proyek ini di-deploy menggunakan **Vercel** (serverless) dengan basis data **MongoDB Atlas**. Pastikan:
 - Environment variables (`MONGODB_URI`, `JWT_SECRET`, `FRONTEND_URL`, dll) sudah di-set di Vercel Project Settings untuk environment **Production** & **Preview**.
 - MongoDB Atlas Network Access mengizinkan koneksi dari `0.0.0.0/0` (karena IP server Vercel bersifat dinamis).
 
-## 👥 Tim Pengembang
+## Tim Pengembang
 
 | Nama | Peran |
 |---|---|
@@ -86,6 +88,6 @@ Proyek ini di-deploy menggunakan **Vercel** (serverless) dengan basis data **Mon
 | Risky Adi | UI/UX Designer |
 | Patricia | Proposal & Dokumentasi |
 
-## 📄 Lisensi
+## Lisensi
 
-Proyek ini dibuat untuk keperluan tugas/workshop.
+Proyek ini dibuat untuk keperluan lomba website Technology Innovative Challenge 9.0.
