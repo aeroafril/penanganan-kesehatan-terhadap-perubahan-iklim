@@ -1,27 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/**
- * Proxy ke BMKG API. Fetch dari sisi server (Node.js) gak kena CORS,
- * jadi frontend cukup fetch ke endpoint ini (satu origin dengan backend),
- * bukan langsung ke api.bmkg.go.id.
- *
- * Contoh pakai dari frontend:
- *   fetch('/api/cuaca?adm4=31.71.03.1001')
- *
- * CACHING: BMKG cuma kasih jatah 60 request/menit per IP, sementara halaman
- * peta kita bisa nembak 30+ kota sekaligus tiap kali dibuka/refresh -> gampang
- * kena 429 (Too Many Requests). Data prakiraan cuaca juga gak berubah tiap detik
- * (per-jam), jadi gak perlu selalu fetch ulang ke BMKG. Solusinya: simpan hasil
- * per wilayah selama beberapa menit di memori server, request berikutnya untuk
- * wilayah yang sama dalam rentang waktu itu langsung dijawab dari cache,
- * TANPA menyentuh BMKG sama sekali.
- */
-
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 menit
 const cache = new Map(); // key: `${paramName}:${adm}` -> { data, expiresAt }
 
-// Bersihkan entry yang sudah kedaluwarsa secara berkala, biar cache gak numpuk terus di memori.
 setInterval(() => {
     const now = Date.now();
     for (const [key, entry] of cache.entries()) {
@@ -59,9 +41,6 @@ router.get('/cuaca', async (req, res) => {
         try {
             bmkgRes = await fetch(bmkgUrl, {
                 headers: {
-                    // Jangan nyamar jadi browser (Mozilla/Chrome dsb) -- Cloudflare
-                    // di depan BMKG malah mencurigai mismatch UA vs fingerprint Node.
-                    // User-Agent jujur ala curl terbukti lolos.
                     'User-Agent': 'curl/8.21.0',
                     'Accept': '*/*'
                 }
@@ -82,9 +61,6 @@ router.get('/cuaca', async (req, res) => {
             const rawBody = await bmkgRes.text().catch(() => '');
             console.error(`Proxy cuaca error: BMKG respond status ${bmkgRes.status}. Body:`, rawBody.slice(0, 300));
 
-            // Kalau kena 429 (rate limit) dan kita masih punya cache basi, lebih
-            // baik pakai itu daripada gagal total -- lebih baik data agak lama
-            // daripada gak ada data sama sekali.
             if (cached) {
                 res.set('X-Cache', 'STALE');
                 return res.json(cached.data);
@@ -113,7 +89,6 @@ router.get('/cuaca', async (req, res) => {
             return res.status(404).json({ message: 'Data cuaca tidak ditemukan untuk wilayah ini.' });
         }
 
-        // Simpan ke cache untuk request berikutnya.
         cache.set(cacheKey, { data, expiresAt: Date.now() + CACHE_TTL_MS });
 
         res.set('X-Cache', 'MISS');
