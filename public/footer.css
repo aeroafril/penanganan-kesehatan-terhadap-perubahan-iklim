@@ -264,4 +264,10 @@
     .team-list{
         gap: 24px;
     }
+
+    .kopiKanan p b{
+        padding: 2px;
+        margin: 4px;
+        font-size: 12px;
+    }
 }

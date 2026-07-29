@@ -201,4 +201,12 @@ body {
     .severity {
         margin: 0;
     }
+
+    .empty-state img {
+        width: 40px;
+    }
+
+    .empty-state img:hover{
+        width: 50px;
+    }
 }

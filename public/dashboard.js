@@ -23,6 +23,7 @@ const dataContent = [
 ]
 
 const dashboardHeroEl = document.getElementById('dashboardHero');
+const aboutSectionEl = document.getElementById('aboutSection');
 
 function renderHero() {
     const slidesHtml = dataContent.map((item, idx) => `
@@ -33,9 +34,9 @@ function renderHero() {
                 </div>
                 <div class="hero-caption">
                     <h3>${item.judul}</h3>
+                    <span>${item.text}</span>
+                </div>
             </a>
-                <span>${item.text}</span>
-            </div>
         </div>
     `).join('');
 
@@ -155,32 +156,39 @@ renderHero();
 const aboutData = [
     {
         judul: "Pemantauan Cuaca Real-Time",
-        desc: "Data cuaca dan kualitas udara terkini langsung dari BMKG untuk kota kamu."
+        desc: "Data cuaca dan kualitas udara terkini langsung dari BMKG untuk kota kamu.",
+        href: "cuaca.html"
+    },
+    {
+        judul: "Penanganan Kesehatan Terhadap Perubahan Iklim",
+        desc: "Panduan gejala dan langkah penanganan untuk kondisi kesehatan yang dipicu cuaca ekstrem.",
+        href: "penangananKesehatan.html"
     },
     {
         judul: "Pendeteksi Gejala Kesehatan",
-        desc: "Cek indikasi awal gangguan kesehatan akibat perubahan cuaca berdasarkan gejala yang kamu rasakan."
+        desc: "Cek indikasi awal gangguan kesehatan akibat perubahan cuaca berdasarkan gejala yang kamu rasakan.",
+        href: "pendeteksiKesehatan.html"
     },
     {
         judul: "Peta Cuaca Nasional",
-        desc: "Pantau kondisi cuaca di kota-kota besar seluruh Indonesia dalam satu tampilan."
+        desc: "Pantau kondisi cuaca di kota-kota besar seluruh Indonesia dalam satu tampilan.",
+        href: "petaCuaca.html"
     },
     {
         judul: "Riwayat Kesehatan",
-        desc: "Semua hasil deteksi kesehatan kamu tersimpan rapi, gampang dicek kapan saja."
+        desc: "Semua hasil deteksi kesehatan kamu tersimpan rapi, gampang dicek kapan saja.",
+        href: "riwayatKesehatan.html"
     }
 ];
-
-const aboutSectionEl = document.getElementById('aboutSection');
 
 function renderAbout() {
     if (!aboutSectionEl) return;
 
     const itemsHtml = aboutData.map(item => `
-        <div class="about-item">
+        <a class="about-item" href="${item.href}">
             <h4>${item.judul}</h4>
             <p>${item.desc}</p>
-        </div>
+        </a>
     `).join('');
 
     aboutSectionEl.innerHTML = `
@@ -201,7 +209,6 @@ function renderAbout() {
 }
 
 renderAbout();
-
 
 async function loadProfile() {
     const token = localStorage.getItem('authToken');
