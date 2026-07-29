@@ -115,8 +115,7 @@ router.post('/forgot-password', async (req, res) => {
         if (!user) {
             return res.json({ message: genericMessage });
         }
-
-        // buat token acak, simpan versi hash-nya di DB (bukan token asli)
+        
         const rawToken = crypto.randomBytes(32).toString('hex');
         const hashedToken = crypto.createHash('sha256').update(rawToken).digest('hex');
 
