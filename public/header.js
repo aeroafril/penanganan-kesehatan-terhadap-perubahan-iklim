@@ -131,3 +131,8 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('currentUser');
     window.location.href = 'index.html';
 });
+
+let headerGaris = document.getElementById("siteHeader");
+window.addEventListener('scroll', function () {
+    headerGaris.classList.toggle('scrolled', window.scrollY > 10);
+}, {passive: true});

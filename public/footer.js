@@ -21,7 +21,9 @@ const dataTeam = [
         nama: "Patricia",
         peran: "Proposal & Dokumentasi",
         instagram: "/medsos/instagram.png",
-        linkig: "https://www.instagram.com/_pptcya/"
+        linkig: "https://www.instagram.com/_pptcya/",
+        github: "/medsos/github.png",
+        linkgt: "https://github.com/patricia4106"
     }
 ];
 

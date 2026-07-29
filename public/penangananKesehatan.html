@@ -9,45 +9,47 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="animasiScroll.css">
 </head>
 <body>
     <div id="header"></div>
 
     <main class="content-wrap">
-        <div class="page-title-row">
+        <div class="page-title-row reveal">
             <div>
                 <h1>Penanganan Kesehatan Terhadap Perubahan Iklim</h1>
                 <p class="page-subtitle">Panduan praktis sesuai kondisi cuaca saat ini, agar kamu tahu langkah tepat sebelum gejala memburuk.</p>
             </div>
         </div>
 
-        <div class="condition-banner" id="conditionBanner">
+        <div class="condition-banner reveal" id="conditionBanner">
             <span class="dot" id="conditionDot"></span>
             <div>Kondisi saat ini: <strong id="conditionText">Memuat data cuaca...</strong></div>
             <span class="badge" id="conditionBadge">Data cuaca real-time</span>
         </div>
 
-        <div class="recommendation-box hidden" id="recommendationBox">
+        <div class="recommendation-box hidden reveal" id="recommendationBox">
             <h3 id="recommendationTitle">Rekomendasi Saat Ini</h3>
             <ul id="recommendationList"></ul>
         </div>
 
-        <h2 class="section-title">Panduan dari kondisi yang kamu alami</h2>
-        <p class="section-sub">Setiap panduan berisi gejala yang perlu diwaspadai dan langkah penanganan awal yang bisa langsung dilakukan.</p>
+        <h2 class="section-title reveal">Panduan dari kondisi yang kamu alami</h2>
+        <p class="section-sub reveal">Setiap panduan berisi gejala yang perlu diwaspadai dan langkah penanganan awal yang bisa langsung dilakukan.</p>
 
-        <div class="guide-grid" id="guideGrid"></div>
+        <div class="guide-grid reveal" id="guideGrid"></div>
 
-        <div class="disclaimer">
+        <div class="disclaimer reveal">
             <strong>Catatan:</strong> Panduan ini bersifat edukatif dan bukan pengganti diagnosis atau penanganan medis profesional. Jika gejala memberat atau tidak membaik, segera konsultasikan ke tenaga kesehatan terdekat.
         </div>
 
-        <p class="source-note">Kategori tingkat bahaya suhu mengacu pada OSHA Heat Index Guidelines (Kestrel Heat Index Reference Guide, berdasar data NOAA).</p>
+        <p class="source-note reveal">Kategori tingkat bahaya suhu mengacu pada OSHA Heat Index Guidelines (Kestrel Heat Index Reference Guide, berdasar data NOAA).</p>
     </main>
 
     <div id="footer"></div>
 
     <div id="weatherWidget" class="weather-widget"></div>
 
+    <script src="animasiScroll.js"></script>
     <script src="config.js"></script>
     <script src="weatherWidget.js"></script>
     <script src="header.js"></script>

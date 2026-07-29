@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="animasiScroll.css">
 </head>
 <body>
     <div id="header"></div>
 
     <main class="cuaca-wrap">
 
-        <div class="page-title-row">
+        <div class="page-title-row reveal">
             <div>
                 <h1>Prakiraan Cuaca</h1>
                 <div class="location-line" id="locationLine">Memuat lokasi...</div>
@@ -30,7 +31,7 @@
             <button class="retry-btn" id="retryBtn">Coba Lagi</button>
         </div>
 
-        <div id="cuacaContent" class="hidden">
+        <div id="cuacaContent" class="hidden reveal">
 
             <div class="day-nav">
                 <button class="day-nav-btn" id="prevDayBtn" aria-label="Hari sebelumnya">&#8592;</button>
@@ -51,6 +52,7 @@
 
     <div id="footer"></div>
 
+    <script src="animasiScroll.js"></script>
     <script src="config.js"></script>
     <script src="cities.js"></script>
     <script src="header.js"></script>

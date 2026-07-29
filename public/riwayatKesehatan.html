@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="animasiScroll.css">
 </head>
 <body>
     <div id="header"></div>
 
     <main class="riwayat-wrap">
 
-        <div class="page-title-row">
+        <div class="page-title-row reveal">
             <h1>Riwayat Kesehatan Kamu</h1>
             <p class="page-subtitle">Semua hasil deteksi gejala dan rekomendasi yang pernah kamu terima dari fitur Pendeteksi Penyakit.</p>
         </div>
 
-        <div class="riwayat-toolbar">
+        <div class="riwayat-toolbar reveal">
             <div>
                 <h2>Daftar Riwayat</h2>
                 <div class="riwayat-count" id="riwayatCount"></div>
@@ -35,6 +36,8 @@
 
     <div id="weatherWidget" class="weather-widget"></div>
 
+    <script src="animasiScroll.js"></script>
+    <script src="config.js"></script>
     <script src="weatherWidget.js"></script>
     <script src="header.js"></script>
     <script src="footer.js"></script>

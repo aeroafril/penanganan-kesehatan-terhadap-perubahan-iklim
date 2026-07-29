@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="animasiScroll.css">
 </head>
 <body>
     <div id="header"></div>
 
     <main class="detect-wrap">
 
-        <div class="page-title-row">
+        <div class="page-title-row reveal">
             <h1>Cek Indikasi Kesehatan Akibat Perubahan Iklim</h1>
             <p class="page-subtitle">Pilih gejala yang sedang kamu alami, sistem akan memberikan indikasi awal beserta rekomendasi langkah selanjutnya.</p>
         </div>
 
-        <div class="detect-card">
+        <div class="detect-card reveal">
             <h2>Gejala yang dialami</h2>
             <p class="hint">Centang semua gejala yang sesuai, lalu klik "Deteksi Sekarang".</p>
 
@@ -41,12 +42,12 @@
                 <label class="symptom-item"><input type="checkbox" value="nyeri_perut"> Nyeri perut</label>
             </div>
 
-            <div class="detect-actions">
+            <div class="detect-actions reveal">
                 <button class="btn-primary" id="detectBtn">Deteksi</button>
                 <button class="btn-secondary" id="resetBtn" type="button">Reset</button>
             </div>
 
-            <div class="result-box" id="resultBox">
+            <div class="result-box reveal" id="resultBox">
                 <div class="result-top">
                     <h3 id="resultTitle"></h3>
                     <span class="severity" id="resultSeverity"></span>
@@ -64,6 +65,8 @@
 
     <div id="weatherWidget" class="weather-widget"></div>
 
+    <script src="animasiScroll.js"></script>
+    <script src="config.js"></script>
     <script src="weatherWidget.js"></script>
     <script src="header.js"></script>
     <script src="footer.js"></script>
