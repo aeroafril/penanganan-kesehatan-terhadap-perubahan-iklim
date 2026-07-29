@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 async function sendResetPasswordEmail(toEmail, firstName, resetLink) {
     const html = `
-        <div style="font-family: Segoe UI, Arial, sans-serif; max-width: 480px; margin: 0 auto; background: #FDF6E2; padding: 32px; border-radius: 12px;">
+        <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 480px; margin: 0 auto; background: #FDF6E2; padding: 32px; border-radius: 8px;">
             <h2 style="color: #4A3B32; margin-bottom: 16px;">Reset Password PETIK</h2>
             <p style="color: #000; font-size: 14px; line-height: 1.6;">
                 Halo <strong>${firstName}</strong>,
@@ -27,7 +27,7 @@ async function sendResetPasswordEmail(toEmail, firstName, resetLink) {
                 </a>
             </div>
             <p style="color: #4A3B32; font-size: 12px; line-height: 1.6;">
-                Link ini hanya berlaku selama 1 jam. Jika kamu tidak merasa meminta reset password, abaikan saja email ini — password akun kamu tetap aman.
+                Link ini hanya berlaku selama 1 jam. Jika kamu tidak merasa meminta reset password, abaikan saja email ini. Password akun kamu tetap aman.
             </p>
             <p style="color: #999; font-size: 11px; margin-top: 24px;">
                 Jika tombol di atas tidak berfungsi, salin dan tempel link berikut ke browser kamu:<br>
@@ -46,7 +46,7 @@ async function sendResetPasswordEmail(toEmail, firstName, resetLink) {
 
 async function sendSuggestionEmail(userMessage) {
     const html = `
-        <div style="font-family: Segoe UI, Arial, sans-serif; max-width: 480px; margin: 0 auto; background: #FDF6E2; padding: 32px; border-radius: 12px;">
+        <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 480px; margin: 0 auto; background: #FDF6E2; padding: 32px; border-radius: 8px;">
             <h2 style="color: #4A3B32; margin-bottom: 16px;">Saran Baru dari Website PETIK</h2>
             <p style="color: #000; font-size: 14px; line-height: 1.6;">
                 Kamu menerima saran atau masukan baru dari pengunjung website:

@@ -100,9 +100,6 @@ router.post('/login', async (req, res) => {
     }
 });
 
-/* ============================================
-   LUPA PASSWORD -> kirim email berisi link reset
-   ============================================ */
 router.post('/forgot-password', async (req, res) => {
     try {
         const { email } = req.body;
@@ -113,8 +110,6 @@ router.post('/forgot-password', async (req, res) => {
 
         const user = await User.findOne({ email });
 
-        // PENTING: pesan sukses tetap sama walau email gak ketemu,
-        // supaya orang gak bisa "menebak" email mana yang terdaftar (mencegah user enumeration)
         const genericMessage = 'Jika email terdaftar, link reset password sudah kami kirim. Silakan cek inbox/folder spam.';
 
         if (!user) {
@@ -140,10 +135,6 @@ router.post('/forgot-password', async (req, res) => {
     }
 });
 
-/* ============================================
-   VALIDASI TOKEN (dipanggil saat gantiPassword.html dibuka,
-   buat cek token masih valid sebelum user isi form)
-   ============================================ */
 router.get('/validate-reset-token', async (req, res) => {
     try {
         const { token, id } = req.query;
@@ -171,9 +162,6 @@ router.get('/validate-reset-token', async (req, res) => {
     }
 });
 
-/* ============================================
-   RESET PASSWORD -> simpan password baru
-   ============================================ */
 router.post('/reset-password', async (req, res) => {
     try {
         const { token, id, password, confirmPassword } = req.body;
