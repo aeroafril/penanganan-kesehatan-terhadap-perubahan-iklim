@@ -13,7 +13,7 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 - **Panduan penanganan kesehatan:** informasi gejala dan langkah penanganan untuk tiap kondisi, disusun berdasarkan regulasi Kemenkes.
 - **Rekomendasi personal:** halaman Panduan Penanganan otomatis menyorot panduan yang paling relevan berdasarkan kondisi yang paling sering dialami pengguna.
 - **Riwayat kesehatan:** setiap hasil deteksi gejala tersimpan otomatis ke MongoDB Atlas (terikat ke akun pengguna, bukan localStorage), lengkap dengan konteks cuaca saat deteksi dilakukan.
-- **Ringkasan & analisis:** statistik frekuensi tiap kondisi, pola waktu deteksi (pagi/siang/sore/malam), dan pola suhu saat deteksi terjadi — ditampilkan dalam accordion ringkas di halaman Riwayat.
+- **Ringkasan & analisis:** statistik frekuensi tiap kondisi, pola waktu deteksi (pagi/siang/sore/malam), dan pola suhu saat deteksi terjadi, ditampilkan dalam accordion ringkas di halaman Riwayat.
 - **Form saran:** pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
 
 ## Teknologi
