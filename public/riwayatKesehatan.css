@@ -49,40 +49,6 @@ body {
 .riwayat-toolbar h2 { font-size: 1.3rem; }
 .riwayat-count { color: var(--coklat); font-size: 0.9rem; }
 
-.btn-clear {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--putih);
-    background-color: #b50000;
-    border: 2px solid var(--hitam);
-    cursor: pointer;
-    padding: 10px 18px;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.15s ease;
-}
-
-.btn-clear:hover {
-    transform: translateY(-2px);
-    color: var(--hitam);
-    border-color: #b50000;
-}
- 
-.btn-clear::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--putih);
-    transform: translateY(-100%);
-    transition: transform 0.2s ease;
-    z-index: -1;
-}
- 
-.btn-clear:hover::before{
-    transform: translateY(0);
-}
-
 .riwayat-item {
     background: var(--putih);
     border: 2px solid var(--hitam);
@@ -110,22 +76,6 @@ body {
 .riwayat-top h3 { font-size: 1.05rem; }
 
 .riwayat-date { font-size: 0.8rem; color: var(--coklat); margin-top: 2px; }
-
-.severity {
-    font-size: 12px;
-    font-weight: 700;
-    margin: 0 40px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 4px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.severity-ringan { background: var(--tealMuda); color: var(--coklat); }
-.severity-sedang { background: var(--teal); color: var(--putih); }
-.severity-tinggi { background: var(--coklat); color: var(--putih); }
 
 .riwayat-item .gejala-list {
     font-size: 0.88rem;

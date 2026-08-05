@@ -1,131 +1,58 @@
-const dataPenanganan = [
-    {
-        id: "heatStroke",
-        judul: "Heat Stroke (Sengatan Panas)",
-        tag: "Suhu ekstrem",
-        gejala: [
-            "Suhu tubuh naik drastis (&gt;39°C)",
-            "Pusing dan kebingungan",
-            "Kulit kering dan memerah, tidak berkeringat",
-            "Mual, lemas, atau pingsan"
-        ],
-        langkah: [
-            "Segera pindah ke tempat teduh dan sejuk",
-            "Longgarkan pakaian, kompres air dingin di leher/ketiak",
-            "Berikan air minum sedikit demi sedikit",
-            "Jika tidak membaik dalam 30 menit, segera ke IGD"
-        ]
-    },
-    {
-        id: "dehidrasi",
-        judul: "Dehidrasi",
-        tag: "Suhu tinggi",
-        gejala: [
-            "Mulut dan bibir kering",
-            "Lemas dan mudah lelah",
-            "Urine berwarna gelap dan jarang buang air kecil",
-            "Sakit kepala ringan"
-        ],
-        langkah: [
-            "Minum air putih atau cairan elektrolit secara bertahap",
-            "Hindari aktivitas berat di luar ruangan siang hari",
-            "Istirahat di tempat sejuk",
-            "Konsultasi dokter bila disertai muntah terus-menerus"
-        ]
-    },
-    {
-        id: "ispa",
-        judul: "ISPA (Infeksi Saluran Pernapasan)",
-        tag: "Kualitas udara buruk",
-        gejala: [
-            "Batuk dan tenggorokan gatal",
-            "Sesak napas atau napas berbunyi",
-            "Mata perih dan berair",
-            "Demam ringan"
-        ],
-        langkah: [
-            "Gunakan masker saat kualitas udara buruk",
-            "Kurangi aktivitas luar ruangan, terutama pagi/sore",
-            "Perbanyak istirahat dan cairan hangat",
-            "Segera ke fasilitas kesehatan bila sesak memberat"
-        ]
-    },
-    {
-        id: "dbd",
-        judul: "DBD & Penyakit Musim Hujan",
-        tag: "Curah hujan tinggi",
-        gejala: [
-            "Demam tinggi mendadak",
-            "Nyeri sendi dan otot",
-            "Muncul ruam merah di kulit",
-            "Mual dan nafsu makan menurun"
-        ],
-        langkah: [
-            "Kompres hangat dan perbanyak minum",
-            "Kuras dan tutup penampungan air di sekitar rumah",
-            "Pantau suhu tubuh secara berkala",
-            "Segera periksa ke fasilitas kesehatan bila demam &gt;2 hari"
-        ]
-    },
-    {
-        id: "iritasiPolusi",
-        judul: "Iritasi Akibat Polusi Udara",
-        tag: "Polusi udara tinggi",
-        gejala: [
-            "Mata perih dan berair",
-            "Batuk ringan",
-            "Tenggorokan gatal atau kering",
-            "Kulit terasa tidak nyaman"
-        ],
-        langkah: [
-            "Bilas mata dengan air bersih",
-            "Gunakan masker saat beraktivitas di luar ruangan",
-            "Hindari area dengan tingkat polusi tinggi",
-            "Periksa ke dokter bila iritasi tidak kunjung membaik"
-        ]
-    },
-    {
-        id: "gangguanPencernaan",
-        judul: "Gangguan Pencernaan",
-        tag: "Kualitas air/makanan terdampak cuaca",
-        gejala: [
-            "Diare",
-            "Mual dan muntah",
-            "Nyeri perut",
-            "Lemas akibat kehilangan cairan tubuh"
-        ],
-        langkah: [
-            "Perbanyak minum cairan elektrolit",
-            "Konsumsi makanan ringan dan mudah dicerna",
-            "Istirahat yang cukup",
-            "Konsultasi dokter bila berlangsung lebih dari 2 hari"
-        ]
-    }
-];
-
 const guideGridEl = document.getElementById('guideGrid');
 
-function tampilPenanganan() {
+async function tampilPenanganan() {
     if (!guideGridEl) return;
 
-    guideGridEl.innerHTML = dataPenanganan.map(item => `
-        <div class="guide-card${item.highlight ? ' highlight' : ''}" id="card${item.id.charAt(0).toUpperCase() + item.id.slice(1)}">
-            <div class="guide-top">
-                <div>
-                    <h3>${item.judul}</h3>
-                    <span class="guide-tag">${item.tag}</span>
+    try {
+        const token = localStorage.getItem('authToken');
+        const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+
+        const res = await fetch('/api/penanganan', { headers });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const { guides, rekomendasiPersonal } = await res.json();
+
+        renderPersonalRecommendation(rekomendasiPersonal);
+
+        guideGridEl.innerHTML = guides.map(item => `
+            <div class="guide-card${item.guideId === rekomendasiPersonal?.guideId ? ' highlight' : ''}" id="card${item.guideId.charAt(0).toUpperCase() + item.guideId.slice(1)}">
+                <div class="guide-top">
+                    <div>
+                        <h3>${item.judul}</h3>
+                        <span class="guide-tag">${item.tag}</span>
+                    </div>
                 </div>
+                <h4>Gejala</h4>
+                <ul>
+                    ${item.gejala.map(g => `<li>${g}</li>`).join('')}
+                </ul>
+                <h4>Langkah Penanganan</h4>
+                <ul>
+                    ${item.langkah.map(l => `<li>${l}</li>`).join('')}
+                </ul>
             </div>
-            <h4>Gejala</h4>
-            <ul>
-                ${item.gejala.map(g => `<li>${g}</li>`).join('')}
-            </ul>
-            <h4>Langkah Penanganan</h4>
-            <ul>
-                ${item.langkah.map(l => `<li>${l}</li>`).join('')}
-            </ul>
+        `).join('');
+    } catch (err) {
+        console.error('Gagal memuat panduan penanganan:', err);
+        guideGridEl.innerHTML = `<p>Gagal memuat data panduan. Coba refresh halaman.</p>`;
+    }
+}
+
+function renderPersonalRecommendation(rekomendasi) {
+    const el = document.getElementById('personalRecommendation');
+    if (!el) return;
+
+    if (!rekomendasi) {
+        el.innerHTML = '';
+        return;
+    }
+
+    el.innerHTML = `
+        <div class="personal-box">
+            <h2>Rekomendasi Untukmu</h2>
+            <p>Berdasarkan riwayat deteksimu, kamu paling sering mengalami <strong>${rekomendasi.nama}</strong> (${rekomendasi.jumlah}x terdeteksi). Panduan di bawah yang bertanda kotak berwarna adalah yang paling relevan buat kamu.</p>
         </div>
-    `).join('');
+    `;
 }
 
 tampilPenanganan();
@@ -228,7 +155,6 @@ tampilPenanganan();
             const result = await res.json();
             const firstDay = result.data[0].cuaca[0];
 
-            // cari slot waktu yang paling dekat dengan jam sekarang
             const now = new Date();
             let closestSlot = firstDay[0];
             let smallestDiff = Infinity;

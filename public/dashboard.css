@@ -320,10 +320,6 @@ body{
     box-shadow: 0 6px 0 var(--hitam);
 }
 
-.about-item:last-child{
-    grid-column: 2 / span 2;
-}
-
 .about-item h4{
     font-size: 1.05rem;
     font-weight: 700;
@@ -381,9 +377,6 @@ body{
     }
     .about-grid{
         grid-template-columns: repeat(2, 1fr);
-    }
-    .about-item:last-child{
-        grid-column: 1 / span 2;
     }
 }
 

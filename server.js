@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const weatherRoutes = require('./routes/weather');
+const healthRoutes = require('./routes/health');
 const { sendSuggestionEmail } = require('./utils/sendEmail');
 
 const app = express();
@@ -50,6 +51,7 @@ app.post('/api/saran', saranLimiter, async (req, res) => {
 
 app.use('/api', authRoutes);
 app.use('/api', weatherRoutes);
+app.use('/api', healthRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 5000;

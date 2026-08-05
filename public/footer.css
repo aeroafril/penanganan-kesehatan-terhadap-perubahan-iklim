@@ -242,7 +242,49 @@
     margin: 16px;
 }
 
-@media (max-width: 480px) {
+@media (max-width:1100px){
+    .team-list{
+        gap: 130px;
+    }
+}
+
+@media (max-width:940px){
+    .team-list{
+        gap: 40px;
+    }
+}
+
+@media (max-width:760px){
+    .team-list{
+        gap: 5px;
+    }
+}
+
+@media (max-width:690px){
+    .contact-wrap2 {
+        font-size: 20px;
+    }
+
+    .contact-submit {
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .footer-meta p{
+        margin-top: 40px;
+    }
+
+    .footer-meta{
+        height: auto;
+        padding: 50px 32px;
+    }
+
+    .team-list{
+        gap: 32px;
+    }
+}
+
+@media (max-width: 480px){
     .contact-wrap2 {
         font-size: 20px;
     }
@@ -266,8 +308,8 @@
     }
 
     .kopiKanan p b{
-        padding: 2px;
-        margin: 4px;
+        padding: none;
+        margin: none;
         font-size: 12px;
     }
 }

@@ -167,19 +167,6 @@ body {
 
 .result-top h3 { font-size: 1.2rem; }
 
-.severity {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 999px;
-}
-
-.severity-ringan { background: var(--tealMuda); color: var(--coklat); }
-.severity-sedang { background: var(--teal); color: var(--putih); }
-.severity-tinggi { background: var(--coklat); color: var(--putih); }
-
 .result-box p { margin-bottom: 10px; font-size: 0.95rem; }
 .result-box .matched { font-size: 0.85rem; color: var(--coklat); margin-bottom: 16px; }
 

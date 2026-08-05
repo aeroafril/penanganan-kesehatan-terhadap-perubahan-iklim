@@ -156,27 +156,32 @@ renderHero();
 const aboutData = [
     {
         judul: "Pemantauan Cuaca Real-Time",
-        desc: "Data cuaca dan kualitas udara terkini langsung dari BMKG untuk kota kamu.",
+        desc: "Data suhu, kelembapan, angin, dan curah hujan terkini dari BMKG untuk kota pilihanmu, lengkap dengan prakiraan beberapa hari ke depan.",
         href: "cuaca.html"
     },
     {
         judul: "Penanganan Kesehatan Terhadap Perubahan Iklim",
-        desc: "Panduan gejala dan langkah penanganan untuk kondisi kesehatan yang dipicu cuaca ekstrem.",
+        desc: "Panduan gejala dan langkah penanganan untuk enam kondisi kesehatan yang dipicu cuaca ekstrem, mulai dari heat stroke hingga ISPA.",
         href: "penangananKesehatan.html"
     },
     {
         judul: "Pendeteksi Gejala Kesehatan",
-        desc: "Cek indikasi awal gangguan kesehatan akibat perubahan cuaca berdasarkan gejala yang kamu rasakan.",
+        desc: "Pilih gejala yang kamu rasakan, sistem mencocokkannya secara otomatis dan memberi indikasi awal beserta rekomendasi penanganannya.",
         href: "pendeteksiKesehatan.html"
     },
     {
         judul: "Peta Cuaca Nasional",
-        desc: "Pantau kondisi cuaca di kota-kota besar seluruh Indonesia dalam satu tampilan.",
+        desc: "Lihat kondisi cuaca di puluhan kota besar se-Indonesia sekaligus dalam satu peta interaktif, tanpa perlu buka satu per satu.",
         href: "petaCuaca.html"
     },
     {
         judul: "Riwayat Kesehatan",
-        desc: "Semua hasil deteksi kesehatan kamu tersimpan rapi, gampang dicek kapan saja.",
+        desc: "Semua hasil deteksi gejala yang pernah kamu lakukan tersimpan otomatis, dan bisa dicek atau dihapus kapan saja.",
+        href: "riwayatKesehatan.html"
+    },
+    {
+        judul: "Ringkasan & Analisis",
+        desc: "Lihat kondisi kesehatan apa yang paling sering kamu alami, lengkap dengan pola berdasarkan waktu dan suhu saat deteksi dilakukan.",
         href: "riwayatKesehatan.html"
     }
 ];
