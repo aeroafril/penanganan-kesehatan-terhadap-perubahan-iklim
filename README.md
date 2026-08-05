@@ -9,10 +9,12 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 - **Autentikasi pengguna:** registrasi & login dengan password ter-enkripsi (bcrypt), sesi menggunakan JWT, serta fitur lupa/reset password lewat email.
 - **Cuaca real-time:** data cuaca (suhu, kelembapan, angin, curah hujan) langsung dari BMKG untuk 31 kota besar di Indonesia.
 - **Peta cuaca interaktif:** visualisasi lokasi & kondisi cuaca tiap kota di peta (Leaflet + vector tiles OpenFreeMap).
-- **Pendeteksi gejala kesehatan:** sistem pakar rule-based untuk mengidentifikasi 6 indikasi kondisi kesehatan yang berkaitan dengan cuaca (heat stroke, dehidrasi, ISPA, iritasi polusi, DBD, gangguan pencernaan).
+- **Pendeteksi gejala kesehatan:** sistem pakar rule-based (dijalankan di server, bukan di browser) untuk mengidentifikasi 6 indikasi kondisi kesehatan yang berkaitan dengan cuaca (heat stroke, dehidrasi, ISPA, iritasi polusi, DBD, gangguan pencernaan).
 - **Panduan penanganan kesehatan:** informasi gejala dan langkah penanganan untuk tiap kondisi, disusun berdasarkan regulasi Kemenkes.
-- **Riwayat kesehatan:** menyimpan histori hasil deteksi gejala pengguna.
-- **Form saran** pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
+- **Rekomendasi personal:** halaman Panduan Penanganan otomatis menyorot panduan yang paling relevan berdasarkan kondisi yang paling sering dialami pengguna.
+- **Riwayat kesehatan:** setiap hasil deteksi gejala tersimpan otomatis ke MongoDB Atlas (terikat ke akun pengguna, bukan localStorage), lengkap dengan konteks cuaca saat deteksi dilakukan.
+- **Ringkasan & analisis:** statistik frekuensi tiap kondisi, pola waktu deteksi (pagi/siang/sore/malam), dan pola suhu saat deteksi terjadi — ditampilkan dalam accordion ringkas di halaman Riwayat.
+- **Form saran:** pengguna dapat mengirim masukan yang diteruskan lewat email, dibatasi rate limit (3x/hari per IP).
 
 ## Teknologi
 
@@ -36,19 +38,26 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
 
 ```
 ├── config/
-│   └── db.js              # koneksi MongoDB Atlas
+│   └── db.js                  # koneksi MongoDB Atlas
 ├── middleware/
-│   └── auth.js             # verifikasi JWT
+│   ├── auth.js                 # verifikasi JWT (wajib login)
+│   └── optionalAuth.js         # verifikasi JWT (opsional, tetap jalan tanpa login)
 ├── models/
-│   └── User.js
+│   ├── User.js
+│   ├── SymptomRule.js           # rule sistem pakar pendeteksi gejala
+│   ├── HealthGuide.js           # konten panduan penanganan kesehatan
+│   └── DetectionHistory.js      # riwayat deteksi per pengguna
 ├── routes/
-│   ├── auth.js              # register, login, forgot/reset password, /me
-│   └── weather.js           # proxy + cache request cuaca ke BMKG
+│   ├── auth.js                  # register, login, forgot/reset password, /me
+│   ├── weather.js               # proxy + cache request cuaca ke BMKG
+│   └── health.js                # panduan, deteksi, riwayat, & analisis pola
+├── scripts/
+│   └── seedHealthData.js        # isi awal data rule & panduan ke MongoDB
 ├── utils/
-│   └── sendEmail.js         # kirim email reset password & saran
-├── public/                  # seluruh file frontend (html, css, js)
-├── server.js                 # entry point Express
-└── vercel.json               # konfigurasi deployment Vercel
+│   └── sendEmail.js             # kirim email reset password & saran
+├── public/                      # seluruh file frontend (html, css, js)
+├── server.js                     # entry point Express
+└── vercel.json                   # konfigurasi deployment Vercel
 ```
 
 ## Menjalankan di Lokal
@@ -66,7 +75,12 @@ Aplikasi web yang membantu masyarakat memantau dampak kesehatan akibat perubahan
    # + kredensial email untuk fitur reset password & form saran (lihat utils/sendEmail.js)
    ```
 
-3. Jalankan server:
+3. Isi database dengan data awal rule sistem pakar & panduan kesehatan (cukup sekali jalan):
+   ```bash
+   node scripts/seedHealthData.js
+   ```
+
+4. Jalankan server:
    ```bash
    node server.js
    ```
@@ -79,6 +93,7 @@ Live: [penanganan-kesehatan-terhadap-perub.vercel.app](https://penanganan-keseha
 Proyek ini di-deploy menggunakan **Vercel** (serverless) dengan basis data **MongoDB Atlas**. Pastikan:
 - Environment variables (`MONGODB_URI`, `JWT_SECRET`, `FRONTEND_URL`, dll) sudah di-set di Vercel Project Settings untuk environment **Production** & **Preview**.
 - MongoDB Atlas Network Access mengizinkan koneksi dari `0.0.0.0/0` (karena IP server Vercel bersifat dinamis).
+- `Vercel Authentication` (Deployment Protection) dalam kondisi **nonaktif** untuk domain production, supaya situs bisa diakses publik.
 
 ## Tim Pengembang
 
